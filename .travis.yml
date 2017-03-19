@@ -123,4 +123,4 @@ matrix:
           - export DISPLAY=':99.0'
           - Xvfb :99 -screen 0 1366x768x24 > /dev/null 2>&1 &
         script:
-          - make test-pc-electron
+          - make travis-pc-electron

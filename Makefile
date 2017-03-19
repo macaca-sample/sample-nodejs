@@ -47,7 +47,6 @@ travis-pc-electron: install
 	npm install macaca-electron macaca-chrome --save-dev
 	${npm_bin}/macaca doctor
 	${npm_bin}/macaca run --no-window --verbose -d ./macaca-test/desktop-browser-sample.test.js
-
 custom-reporter:
 	npm install macaca-simple-reportor --save-dev
 	macaca doctor
