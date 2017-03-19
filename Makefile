@@ -40,10 +40,10 @@ travis-android-chrome: install
 	npm install macaca-android --save-dev
 	${npm_bin}/macaca doctor
 	browser=chrome ${npm_bin}/macaca run --verbose -d ./macaca-test/mobile-browser-sample.test.js
-test-pc:
+test-pc-electron:
 	macaca doctor
 	macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
-travis-pc: install
+travis-pc-electron: install
 	npm install macaca-electron macaca-chrome --save-dev
 	${npm_bin}/macaca doctor
 	${npm_bin}/macaca run --no-window --verbose -d ./macaca-test/desktop-browser-sample.test.js
