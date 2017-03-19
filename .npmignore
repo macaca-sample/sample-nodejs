@@ -1,0 +1,14 @@
+coverage.html
+lib-cov/
+node_modules
+.travis.yml
+.drone.yml
+examples/
+.jshintrc
+.jshintignore
+coverage/
+macaca-logs/
+screenshot/
+macaca-logs/
+*.sw*
+*.un~
