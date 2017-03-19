@@ -6,12 +6,13 @@ install:
 	@npm install
 test:
 	@echo ""
-	@echo "make test-ios             Test sample for iOS"
-	@echo "make test-android         Test sample for Android"
-	@echo "make test-ios-safari      Test sample for iOS Safari"
-	@echo "make test-android-chrome  Test sample for Android Chrome"
-	@echo "make test-pc              Test sample for Desktop PC"
-	@echo "make custom-reporter      Test sample for PC with custom reporter"
+	@echo "make test-ios               Test sample for iOS"
+	@echo "make test-android           Test sample for Android"
+	@echo "make test-ios-safari        Test sample for iOS Safari"
+	@echo "make test-android-chrome    Test sample for Android Chrome"
+	@echo "make test-desktop-electron  Test sample for Desktop PC"
+	@echo "make test-desktop-chrome    Test sample for Desktop PC"
+	@echo "make custom-reporter        Test sample for PC with custom reporter"
 test-ios:
 	macaca doctor
 	platform=ios macaca run --verbose -d ./macaca-test/mobile-app-sample.test.js
@@ -40,13 +41,16 @@ travis-android-chrome: install
 	npm install macaca-android --save-dev
 	${npm_bin}/macaca doctor
 	browser=chrome ${npm_bin}/macaca run --verbose -d ./macaca-test/mobile-browser-sample.test.js
-test-pc-electron:
+test-desktop-electron:
 	macaca doctor
-	macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
-travis-pc-electron: install
-	npm install macaca-electron macaca-chrome --save-dev
+	browser=electron macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
+travis-desktop-electron: install
+	npm install macaca-electron --save-dev
 	${npm_bin}/macaca doctor
-	${npm_bin}/macaca run --no-window --verbose -d ./macaca-test/desktop-browser-sample.test.js
+	browser=electron ${npm_bin}/macaca run --no-window --verbose -d ./macaca-test/desktop-browser-sample.test.js
+test-desktop-chrome:
+	macaca doctor
+	browser=chrome macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
 custom-reporter:
 	npm install macaca-simple-reportor --save-dev
 	macaca doctor

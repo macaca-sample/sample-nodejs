@@ -6,7 +6,7 @@ env:
   - TEST_SUITE=android
   - TEST_SUITE=ios-browser
   - TEST_SUITE=android-browser
-  - TEST_SUITE=pc-browser
+  - TEST_SUITE=desktop-browser
 matrix:
     fast_finish: true
     exclude:
@@ -19,7 +19,7 @@ matrix:
       - os: osx
         env: TEST_SUITE=android-browser
       - os: osx
-        env: TEST_SUITE=pc-browser
+        env: TEST_SUITE=desktop-browser
       - os: linux
         env: TEST_SUITE=ios
       - os: linux
@@ -29,7 +29,7 @@ matrix:
       - os: linux
         env: TEST_SUITE=android-browser
       - os: linux
-        env: TEST_SUITE=pc-browser
+        env: TEST_SUITE=desktop-browser
     include:
       - os: osx
         env: TEST_SUITE=ios
@@ -110,7 +110,7 @@ matrix:
         script:
           - make travis-android-chrome
       - os: linux
-        env: TEST_SUITE=pc-browser
+        env: TEST_SUITE=desktop-browser
         language: node_js
         sudo: false
         node_js:
@@ -123,4 +123,4 @@ matrix:
           - export DISPLAY=':99.0'
           - Xvfb :99 -screen 0 1366x768x24 > /dev/null 2>&1 &
         script:
-          - make travis-pc-electron
+          - make travis-desktop-electron

@@ -3,6 +3,9 @@
 require('should');
 const wd = require('macaca-wd');
 
+var browser = process.env.browser || 'electron';
+browser = browser.toLowerCase();
+
 describe('macaca desktop sample', function() {
   this.timeout(5 * 60 * 1000);
 
@@ -16,7 +19,7 @@ describe('macaca desktop sample', function() {
     return driver
       .init({
         platformName: 'desktop',
-        browserName: 'electron' || 'chrome'
+        browserName: browser
       })
       .maximize()
       .setWindowSize(1280, 800);
