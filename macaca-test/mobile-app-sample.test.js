@@ -1,12 +1,13 @@
 'use strict';
 
 require('should');
-var xml2map = require('xml2map');
+const xml2map = require('xml2map');
+const KEY_MAP = require('webdriver-keycode');
 
 var platform = process.env.platform || 'iOS';
 platform = platform.toLowerCase();
 
-var pkg = require('../package');
+const pkg = require('../package');
 
 /**
  * download app form npm
@@ -79,6 +80,7 @@ describe('macaca mobile sample', function() {
       .then(size => {
         console.log(`current window size ${JSON.stringify(size)}`);
       })
+      .keys(KEY_MAP.VOLUME_MUTE)
       .appLogin('中文+Test+12345678', '111111')
       .sleep(1000);
   });
