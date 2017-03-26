@@ -9,4 +9,6 @@ build/
 macaca-logs/
 *.sw*
 *.un~
-*.png
+diff.png
+pic1.png
+pic2.png

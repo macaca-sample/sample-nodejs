@@ -11,6 +11,7 @@
     "url": "git://github.com/macaca-sample/sample-nodejs.git"
   },
   "devDependencies": {
+    "blink-diff": "^1.0.13",
     "macaca-cli": "^1.1.0",
     "macaca-simple-reportor": "^1.0.0",
     "macaca-utils": "^0.1.8",
