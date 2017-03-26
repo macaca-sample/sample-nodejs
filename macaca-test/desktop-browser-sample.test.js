@@ -50,6 +50,22 @@ describe('macaca desktop sample', function() {
       .then(value => {
         value.should.containEql('255');
       })
+      // https://github.com/macacajs/macaca-electron#windowalert
+      .execute(`
+        var e = document.createElement('div');
+        e.id = 'alert_msg';
+        window.alert = function() {
+          e.innerHTML = JSON.stringify(arguments[0]);
+          document.body.appendChild(e);
+	      };
+      `)
+      .elementById('alert_button')
+      .click()
+      .elementById('alert_msg')
+      .text()
+      .then(value => {
+        value.should.containEql('this message is from alert');
+      })
       .sleep(3000);
   });
 
