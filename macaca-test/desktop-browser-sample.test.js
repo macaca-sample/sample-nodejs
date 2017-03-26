@@ -38,7 +38,19 @@ describe('macaca desktop sample', function() {
       .getProperty('value')
       .then(value => {
         value.should.be.equal('2');
-      });
+      })
+      .execute(`
+        var element = document.querySelector('#hover_text');
+        var event = document.createEvent('MouseEvent');
+        event.initMouseEvent('mouseover', true, true);
+        element.dispatchEvent(event);
+      `)
+      .elementById('hover_text')
+      .getComputedCss('color')
+      .then(value => {
+        value.should.containEql('255');
+      })
+      .sleep(3000);
   });
 
   it('#1 should works with online pages', function() {
