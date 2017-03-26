@@ -1,7 +1,9 @@
 'use strict';
 
 require('should');
+const path = require('path');
 const wd = require('macaca-wd');
+
 const diffImage = require('./utils.js').diffImage;
 
 var browser = process.env.browser || 'electron';
@@ -14,7 +16,6 @@ describe('macaca desktop sample', function() {
     host: 'localhost',
     port: 3456
   });
-  const initialURL = 'https://www.baidu.com';
 
   before(() => {
     return driver
@@ -26,14 +27,26 @@ describe('macaca desktop sample', function() {
       .setWindowSize(1280, 800);
   });
 
-  it('#0 should go into macaca', function() {
+  it('#0 should be ok', function() {
+    const url = path.join(__dirname, './pages/desktop-sample.html');
     return driver
-      .get(initialURL)
-      .sleep(3000);
+      .get(`file://${url}`)
+      .sleep(3000)
+      .execute(`document.querySelector('#select').selectedIndex = 1`)
+      .sleep(1000)
+      .elementById('select')
+      .getProperty('value')
+      .then(value => {
+        value.should.be.equal('2');
+      });
   });
 
-  it('#1 should works with macaca', function() {
+  it('#1 should works with online pages', function() {
+    const initialURL = 'https://www.baidu.com';
+
     return driver
+      .get(initialURL)
+      .sleep(3000)
       .elementById('kw')
       .sendKeys('macaca')
       .sleep(3000)
@@ -57,14 +70,11 @@ describe('macaca desktop sample', function() {
       .saveScreenshot('pic1');
   });
 
-  it('#2 should go into web', function() {
+  it('#2 should works with web', function() {
+    const initialURL = 'https://www.baidu.com';
     return driver
       .get(initialURL)
-      .sleep(3000);
-  });
-
-  it('#3 should works with web', function() {
-    return driver
+      .sleep(3000)
       .elementById('kw')
       .sendKeys('Macaca')
       .sleep(3000)
@@ -78,7 +88,7 @@ describe('macaca desktop sample', function() {
       .saveScreenshot('pic2');
   });
 
-  it('#4 should works with iframe', function() {
+  it('#3 should works with iframe', function() {
     const iframeURL = 'https://rawgit.com/xudafeng/use-tinyMce-textEditor/master/index.html';
 
     return driver
@@ -105,7 +115,6 @@ describe('macaca desktop sample', function() {
         console.log(e);
       });
   });
-
 
   after(() => {
     return driver
