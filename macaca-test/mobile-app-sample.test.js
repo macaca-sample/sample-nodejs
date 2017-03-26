@@ -80,7 +80,7 @@ describe('macaca mobile sample', function() {
       .then(size => {
         console.log(`current window size ${JSON.stringify(size)}`);
       })
-      .keys(`send keys: ${KEY_MAP.HOME_SCREEN}`)
+      .keys(`send keys: ${KEY_MAP.VOLUME_MUTE}`)
       .appLogin('中文+Test+12345678', '111111')
       .sleep(1000);
   });
