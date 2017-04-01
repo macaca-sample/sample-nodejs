@@ -113,23 +113,6 @@ describe('macaca mobile sample', function() {
       .acceptAlert()
       .sleep(1000)
       .customback()
-      .sleep(1000)
-      .touch('drag', {
-        fromX: 200,
-        fromY: 400,
-        toX: 200,
-        toY: 100,
-        duration: 0.5
-      })
-      .sleep(1000)
-      .touch('drag', {
-        fromX: 100,
-        fromY: 100,
-        toX: 100,
-        toY: 400,
-        duration: 0.5
-      })
-      .sleep(1000)
       .elementByName('Gesture')
       .click()
       .sleep(1000)
