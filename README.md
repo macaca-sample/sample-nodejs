@@ -12,7 +12,7 @@
 
 ## Usage
 
-```shell
+``` bash
 $ make
 ```
 
