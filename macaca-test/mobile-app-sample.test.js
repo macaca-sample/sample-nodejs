@@ -24,7 +24,7 @@ const pkg = require('../package');
 // see: https://macacajs.github.io/desired-caps
 
 var iOSOpts = {
-  deviceName: 'iPhone 5s',
+  deviceName: 'iPhone 6',
   platformName: 'iOS',
   autoAcceptAlerts: false,
   //reuse: 3,
@@ -102,11 +102,18 @@ describe('macaca mobile sample', function() {
       .click()
       .elementByName('list')
       .click()
-      .sleep(1000);
+      .sleep(2000);
   });
 
   it('#4 should cover gestrure', function() {
     return driver
+      .elementByName('Alert')
+      .click()
+      .sleep(1000)
+      .acceptAlert()
+      .sleep(1000)
+      .customback()
+      .sleep(1000)
       .touch('drag', {
         fromX: 200,
         fromY: 400,
@@ -122,17 +129,6 @@ describe('macaca mobile sample', function() {
         toY: 400,
         duration: 0.5
       })
-      .sleep(1000)
-      .elementByName('Alert')
-      .click()
-      .sleep(1000)
-      .acceptAlert()
-      .sleep(1000)
-      // TODO keyevent only Android
-      //.keys(29)
-      //.keys(30)
-      //.keys(21)
-      .customback()
       .sleep(1000)
       .elementByName('Gesture')
       .click()
