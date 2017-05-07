@@ -45,7 +45,7 @@ module.exports = (wd, isIOS) => {
       })
       .clear()
       .sendKeys(password)
-      .sleep(1000)
+      .keys(66)
       .waitForElementByName('Login')
       .click()
       .sleep(5000);

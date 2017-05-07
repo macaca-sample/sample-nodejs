@@ -134,7 +134,7 @@ describe('macaca mobile sample', function() {
           .elementById(infoBoardId)
           .text()
           .then(text => {
-            text.should.containEql('singleTap');
+            JSON.stringify(text).should.containEql('singleTap');
           });
       })
       .then(() => {
@@ -152,7 +152,8 @@ describe('macaca mobile sample', function() {
           .touch('pinch', {
             scale: 2,      // only for iOS
             velocity: 1,   // only for iOS
-            percent: 200,  // only for Android
+            direction: 'in',// only for Android
+            percent: 0.2,  // only for Android
             steps: 200     // only for Android
           })
           .sleep(1000);
