@@ -81,7 +81,8 @@ matrix:
           - export PATH=$GRADLE_HOME/bin:$PATH
           - . $HOME/.nvm/nvm.sh
           - nvm install 7
-          - echo no | android create avd --force -n test -t android-25 --abi x86_64
+          - echo no | android update sdk --no-ui --filter sys-img-x86_64-google_apis-25 --all
+          - echo no | android create avd --force -n test -t "android-25" --abi x86_64 --tag google_apis
           - emulator -avd test -no-audio -no-window &
           - android-wait-for-emulator
           - adb shell input keyevent 82 &
@@ -113,7 +114,8 @@ matrix:
         before_script:
           - . $HOME/.nvm/nvm.sh
           - nvm install 7
-          - echo no | android create avd --force -n test -t android-25 --abi x86_64
+          - echo no | android update sdk --no-ui --filter sys-img-x86_64-google_apis-25 --all
+          - echo no | android create avd --force -n test -t "android-25" --abi x86_64 --tag google_apis
           - emulator -avd test -no-audio -no-window &
           - android-wait-for-emulator
           - adb shell input keyevent 82 &
