@@ -76,12 +76,12 @@ matrix:
           - sh -e /etc/init.d/xvfb start
         before_script:
           - wget http://services.gradle.org/distributions/gradle-3.3-all.zip
-          - unzip gradle-3.3-all.zip &
+          - unzip gradle-3.3-all.zip > /dev/null
           - export GRADLE_HOME=$PWD/gradle-3.3
           - export PATH=$GRADLE_HOME/bin:$PATH
           - . $HOME/.nvm/nvm.sh
           - nvm install 7
-          - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a
+          - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
           - emulator -avd test -no-audio -no-window &
           - android-wait-for-emulator
           - adb shell input keyevent 82 &
@@ -102,7 +102,7 @@ matrix:
         sudo: required
         before_install:
           - wget http://services.gradle.org/distributions/gradle-3.3-all.zip
-          - unzip gradle-3.3-all.zip &
+          - unzip gradle-3.3-all.zip > /dev/null
           - export GRADLE_HOME=$PWD/gradle-3.3
           - export PATH=$GRADLE_HOME/bin:$PATH
           - export CHROME_BIN=chromium-browser
@@ -113,7 +113,7 @@ matrix:
         before_script:
           - . $HOME/.nvm/nvm.sh
           - nvm install 7
-          - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a
+          - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
           - emulator -avd test -no-audio -no-window &
           - android-wait-for-emulator
           - adb shell input keyevent 82 &
