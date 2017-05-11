@@ -108,7 +108,7 @@ describe('macaca mobile sample', function() {
     return driver
       .elementByName('Alert')
       .click()
-      .sleep(1000)
+      .sleep(3000)
       .acceptAlert()
       .sleep(1000)
       .customback()
