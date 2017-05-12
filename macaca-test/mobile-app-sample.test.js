@@ -165,18 +165,18 @@ describe('macaca mobile sample', function() {
           })
           .sleep(1000);
       })*/
+      .customback()
       .then(() => {
         return driver
           .touch('drag', {
             fromX: 100,
-            fromY: 100,
+            fromY: 600,
             toX: 100,
-            toY: 600,
-            duration: 1
+            toY: 100,
+            duration: 3
           })
           .sleep(1000);
       })
-      .customback()
       .sleep(1000);
   });
 
