@@ -11,12 +11,12 @@
 [circle-url-0]: https://circleci.com/gh/macaca-sample/macaca-test-sample
 
 This reposistory contains various samples that demonstrate how to use Macaca to test:
-1. native iOS app
+1. native iOS app
 2. native android app
 3. mobile Safari web app
 4. mobile Chrome web app
 5. desktop Electron app
-6. desktop Chrome web app
+6. desktop Chrome web app
 7. generate custom report for desktop web app
 
 ## Usage
@@ -36,7 +36,7 @@ make test-desktop-electron  Test sample for Desktop PC
 make test-desktop-chrome    Test sample for Desktop PC
 make custom-reporter        Test sample for PC with custom reporter
 ```
-**Keep in mind, you have to open an android emulator before you run 'make test-android'**
+**Keep in mind, you have to open an android emulator if you want to run it against an emulator, before you run 'make test-android'**
 
 
 You can read `Makefile` to understand the detail of each command
