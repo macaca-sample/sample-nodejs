@@ -80,6 +80,7 @@ describe('macaca mobile sample', function() {
       .then(size => {
         console.log(`current window size ${JSON.stringify(size)}`);
       })
+      .sleep(20 * 1000)
       .appLogin('中文+Test+12345678', '111111')
       .sleep(1000);
   });
