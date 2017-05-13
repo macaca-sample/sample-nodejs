@@ -6,7 +6,7 @@ module.exports = (wd, isIOS) => {
   wd.addPromiseChainMethod('customback', function() {
     if (isIOS) {
       return this
-        .elementByNameIfExists('list')
+        .waitForElementByNameIfExists('list')
         .click()
         .sleep(1000);
     }
@@ -39,7 +39,7 @@ module.exports = (wd, isIOS) => {
       .clear()
       .sendKeys(username)
       .sleep(1000)
-      .elementsByClassName('android.widget.EditText')
+      .waitForElementsByClassName('android.widget.EditText')
       .then(function(els) {
         return els[1];
       })
@@ -89,37 +89,37 @@ module.exports = (wd, isIOS) => {
   wd.addPromiseChainMethod('testGetProperty', function() {
     if (isIOS) {
       return this
-        .elementByName('list')
+        .waitForElementByName('list')
         .getProperty('isVisible')
         .then(info => {
           console.log(`isVisible: ${JSON.stringify(info)}`);
         })
-        .elementByName('list')
+        .waitForElementByName('list')
         .getProperty('isAccessible')
         .then(info => {
           console.log(`element isAccessible: ${JSON.stringify(info)}`);
         })
-        .elementByName('list')
+        .waitForElementByName('list')
         .getProperty('isEnabled')
         .then(info => {
           console.log(`element isEnabled: ${JSON.stringify(info)}`);
         })
-        .elementByName('list')
+        .waitForElementByName('list')
         .getProperty('type')
         .then(info => {
           console.log(`element type: ${JSON.stringify(info)}`);
         })
-        .elementByName('list')
+        .waitForElementByName('list')
         .getProperty('label')
         .then(info => {
           console.log(`element label: ${JSON.stringify(info)}`);
         })
-        .elementByName('list')
+        .waitForElementByName('list')
         .getProperty('name')
         .then(info => {
           console.log(`element name: ${JSON.stringify(info)}`);
         })
-        .elementByName('list')
+        .waitForElementByName('list')
         .getProperty('value')
         .then(info => {
           console.log(`element value: ${JSON.stringify(info)}`);
@@ -129,7 +129,7 @@ module.exports = (wd, isIOS) => {
     // for Android
 
     return this
-      .elementByName('list')
+      .waitForElementByName('list')
       .getProperty('description') // content-desc
       .then(d => {
         console.log(d);
