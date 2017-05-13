@@ -39,6 +39,11 @@ module.exports = (wd, isIOS) => {
       })
       .clear()
       .sendKeys(username)
+      .elementByXPath('//android.widget.EditText[1]')
+      .getProperty('value')
+      .then(info => {
+        console.log(`element value: ${JSON.stringify(info)}`);
+      })
       .sleep(1000)
       .waitForElementsByClassName('android.widget.EditText')
       .then(function(els) {
