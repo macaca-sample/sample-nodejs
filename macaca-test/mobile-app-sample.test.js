@@ -52,7 +52,7 @@ const wd = require('macaca-wd');
 require('./wd-extend')(wd, isIOS);
 
 describe('macaca mobile sample', function() {
-  this.timeout(5 * 60 * 1000);
+  this.timeout(10 * 60 * 1000);
 
   const driver = wd.promiseChainRemote({
     host: 'localhost',
