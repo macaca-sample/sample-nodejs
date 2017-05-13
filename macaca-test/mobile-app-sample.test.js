@@ -126,8 +126,8 @@ describe('macaca mobile sample', function() {
       .then(() => {
         return driver
           .touch('tap', {
-            x: 100,
-            y: 100
+            x: 50,
+            y: 50
           })
           .sleep(1000)
           .waitForElementById(infoBoardId)
