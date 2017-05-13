@@ -81,8 +81,7 @@ describe('macaca mobile sample', function() {
       .then(size => {
         console.log(`current window size ${JSON.stringify(size)}`);
       })
-      .appLogin('中文+Test+12345678', '111111')
-      .sleep(1000);
+      .appLogin('中文+Test+12345678', '111111');
   });
 
   it('#2 should display home', function() {
@@ -115,6 +114,7 @@ describe('macaca mobile sample', function() {
       .customback()
       .waitForElementByName('Gesture')
       .click()
+      .waitForElementById(infoBoardId)
       .then(() => {
         return driver
           .touch('tap', {
@@ -130,7 +130,7 @@ describe('macaca mobile sample', function() {
             y: 50
           })
           .sleep(1000)
-          .waitForElementById(infoBoardId)
+          .elementById(infoBoardId)
           .text()
           .then(text => {
             JSON.stringify(text).should.containEql('singleTap');

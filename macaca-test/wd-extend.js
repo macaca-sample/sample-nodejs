@@ -135,7 +135,7 @@ module.exports = (wd, isIOS) => {
     // for Android
 
     return this
-      .waitForElementByName('list')
+      .elementByName('list')
       .getProperty('description') // content-desc
       .then(d => {
         console.log(d);
