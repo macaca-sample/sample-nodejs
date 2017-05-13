@@ -36,6 +36,7 @@ var iOSOpts = {
 var androidOpts = {
   platformName: 'Android',
   autoAcceptAlerts: false,
+  isWaitActivity: true,
   //reuse: 3,
   //udid: '',
   //package: 'com.github.android_app_bootstrap',
