@@ -83,7 +83,7 @@ describe('macaca mobile sample', function() {
       .appLogin('中文+Test+12345678', '111111')
       .sleep(1000);
   });
-
+/*
   it('#2 should display home', function() {
     return driver
       .source()
@@ -93,7 +93,7 @@ describe('macaca mobile sample', function() {
       })
       .takeScreenshot();
   });
-
+*/
   it('#3 should scroll tableview', function() {
     return driver
       .testGetProperty()
