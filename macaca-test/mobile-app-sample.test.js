@@ -36,6 +36,7 @@ var iOSOpts = {
 var androidOpts = {
   platformName: 'Android',
   autoAcceptAlerts: false,
+  isWaitActivity: true,
   //reuse: 3,
   //udid: '',
   //package: 'com.github.android_app_bootstrap',
@@ -52,7 +53,7 @@ const wd = require('macaca-wd');
 require('./wd-extend')(wd, isIOS);
 
 describe('macaca mobile sample', function() {
-  this.timeout(5 * 60 * 1000);
+  this.timeout(10 * 60 * 1000);
 
   const driver = wd.promiseChainRemote({
     host: 'localhost',
@@ -80,8 +81,7 @@ describe('macaca mobile sample', function() {
       .then(size => {
         console.log(`current window size ${JSON.stringify(size)}`);
       })
-      .appLogin('中文+Test+12345678', '111111')
-      .sleep(1000);
+      .appLogin('中文+Test+12345678', '111111');
   });
 
   it('#2 should display home', function() {
@@ -97,39 +97,31 @@ describe('macaca mobile sample', function() {
   it('#3 should scroll tableview', function() {
     return driver
       .testGetProperty()
-      .elementByName('HOME')
+      .waitForElementByName('HOME')
       .click()
-      .elementByName('list')
+      .waitForElementByName('list')
       .click()
       .sleep(2000);
   });
 
   it('#4 should cover gestrure', function() {
     return driver
-      .elementByName('Alert')
+      .waitForElementByName('Alert')
       .click()
-      .sleep(3000)
+      .sleep(5000)
       .acceptAlert()
       .sleep(1000)
       .customback()
-      .elementByName('Gesture')
+      .waitForElementByName('Gesture')
       .click()
-      .sleep(1000)
+      .sleep(5000)
       .then(() => {
         return driver
           .touch('tap', {
             x: 100,
             y: 100
           })
-          .sleep(1000);
-      })
-      .then(() => {
-        return driver
-          .touch('tap', {
-            x: 100,
-            y: 100
-          })
-          .sleep(1000)
+          .sleep(5000)
           .elementById(infoBoardId)
           .text()
           .then(text => {
@@ -147,7 +139,7 @@ describe('macaca mobile sample', function() {
       })
       .then(() => {
         return driver
-          .elementById(infoBoardId)
+          .waitForElementById(infoBoardId)
           .touch('pinch', {
             scale: 2,      // only for iOS
             velocity: 1,   // only for iOS
@@ -183,25 +175,15 @@ describe('macaca mobile sample', function() {
   it('#5 should go into webview', function() {
     return driver
       .customback()
-      .elementByName('Webview')
+      .waitForElementByName('Webview')
       .click()
       .sleep(3000)
       .takeScreenshot()
       .changeToWebviewContext()
-      .elementById('pushView')
+      .waitForElementById('pushView')
       .click()
-      .changeToNativeContext()
-      .then(() => {
-        return driver
-          .touch('tap', {
-            x: 100,
-            y: 100
-          })
-          .sleep(1000);
-      })
-      .sleep(5000)
       .changeToWebviewContext()
-      .elementById('popView')
+      .waitForElementById('popView')
       .click()
       .sleep(5000)
       .takeScreenshot();
@@ -210,7 +192,7 @@ describe('macaca mobile sample', function() {
   it('#6 should go into test', function() {
     return driver
       .changeToNativeContext()
-      .elementByName('Baidu')
+      .waitForElementByName('Baidu')
       .click()
       .sleep(5000)
       .takeScreenshot();
@@ -229,14 +211,14 @@ describe('macaca mobile sample', function() {
       })
       .refresh()
       .sleep(2000)
-      .elementById('index-kw')
+      .waitForElementById('index-kw')
       .getProperty('name')
       .then(info => {
         console.log(`get web attribute name: ${JSON.stringify(info)}`);
       })
-      .elementById('index-kw')
+      .waitForElementById('index-kw')
       .sendKeys('中文+Macaca')
-      .elementById('index-bn')
+      .waitForElementById('index-bn')
       .click()
       .sleep(5000)
       .source()
@@ -251,11 +233,11 @@ describe('macaca mobile sample', function() {
   it('#8 should logout success', function() {
     return driver
       .changeToNativeContext()
-      .elementByName('PERSONAL')
+      .waitForElementByName('PERSONAL')
       .click()
       .sleep(1000)
       .takeScreenshot()
-      .elementByName('Logout')
+      .waitForElementByName('Logout')
       .click()
       .sleep(1000)
       .takeScreenshot();
