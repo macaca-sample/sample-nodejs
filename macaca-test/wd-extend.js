@@ -12,7 +12,8 @@ module.exports = (wd, isIOS) => {
     }
 
     return this
-      .back();
+      .back()
+      .sleep(3000);
   });
 
   wd.addPromiseChainMethod('appLogin', function(username, password) {
