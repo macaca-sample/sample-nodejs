@@ -190,16 +190,6 @@ describe('macaca mobile sample', function() {
       .changeToWebviewContext()
       .waitForElementById('pushView')
       .click()
-      .changeToNativeContext()
-      .then(() => {
-        return driver
-          .touch('tap', {
-            x: 100,
-            y: 100
-          })
-          .sleep(1000);
-      })
-      .sleep(5000)
       .changeToWebviewContext()
       .waitForElementById('popView')
       .click()
