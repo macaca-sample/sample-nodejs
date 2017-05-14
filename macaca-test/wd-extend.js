@@ -1,5 +1,7 @@
 'use strict';
 
+const KEY_MAP = require('webdriver-keycode');
+
 // npm package wrapper sample: https://github.com/macaca-sample/webdriver-client
 
 module.exports = (wd, isIOS) => {
@@ -51,7 +53,7 @@ module.exports = (wd, isIOS) => {
       })
       .clear()
       .sendKeys(password)
-      .keys(66)
+      .keys(`${KEY_MAP.ENTER}${KEY_MAP.ESCAPE}`)
       .waitForElementByName('Login')
       .click()
       .sleep(5000);
