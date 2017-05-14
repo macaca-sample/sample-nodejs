@@ -114,22 +114,14 @@ describe('macaca mobile sample', function() {
       .customback()
       .waitForElementByName('Gesture')
       .click()
-      .waitForElementById(infoBoardId)
+      .sleep(5000)
       .then(() => {
         return driver
           .touch('tap', {
             x: 100,
             y: 100
           })
-          .sleep(1000);
-      })
-      .then(() => {
-        return driver
-          .touch('tap', {
-            x: 50,
-            y: 50
-          })
-          .sleep(1000)
+          .sleep(5000)
           .elementById(infoBoardId)
           .text()
           .then(text => {

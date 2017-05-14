@@ -6,7 +6,7 @@ module.exports = (wd, isIOS) => {
   wd.addPromiseChainMethod('customback', function() {
     if (isIOS) {
       return this
-        .waitForElementByNameIfExists('list')
+        .waitForElementByName('list')
         .click()
         .sleep(1000);
     }
