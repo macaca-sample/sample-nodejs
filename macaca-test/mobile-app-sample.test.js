@@ -23,7 +23,7 @@ const pkg = require('../package');
 // see: https://macacajs.github.io/desired-caps
 
 var iOSOpts = {
-  deviceName: 'iPhone 6',
+  deviceName: 'iPhone 6s',
   platformName: 'iOS',
   autoAcceptAlerts: false,
   //reuse: 3,
@@ -87,7 +87,7 @@ describe('macaca mobile sample', function() {
     return driver
       .source()
       .then(res => {
-        console.log(xml);
+        console.log(res);
       })
       .takeScreenshot();
   });
