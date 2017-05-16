@@ -1,7 +1,6 @@
 'use strict';
 
 require('should');
-const xml2map = require('xml2map');
 const KEY_MAP = require('webdriver-keycode');
 
 var platform = process.env.platform || 'iOS';
@@ -88,7 +87,6 @@ describe('macaca mobile sample', function() {
     return driver
       .source()
       .then(res => {
-        var xml = xml2map.tojson(res);
         console.log(xml);
       })
       .takeScreenshot();
@@ -175,12 +173,12 @@ describe('macaca mobile sample', function() {
   it('#5 should go into webview', function() {
     return driver
       .customback()
-      .waitForElementByName('Webview')
+      .elementById('Webview')
       .click()
       .sleep(3000)
       .takeScreenshot()
       .changeToWebviewContext()
-      .waitForElementById('pushView')
+      .elementById('pushView')
       .click()
       .changeToWebviewContext()
       .waitForElementById('popView')
@@ -211,14 +209,14 @@ describe('macaca mobile sample', function() {
       })
       .refresh()
       .sleep(2000)
-      .waitForElementById('index-kw')
+      .elementById('index-kw')
       .getProperty('name')
       .then(info => {
         console.log(`get web attribute name: ${JSON.stringify(info)}`);
       })
       .waitForElementById('index-kw')
       .sendKeys('中文+Macaca')
-      .waitForElementById('index-bn')
+      .elementById('index-bn')
       .click()
       .sleep(5000)
       .source()
