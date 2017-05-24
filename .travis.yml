@@ -37,10 +37,10 @@ matrix:
         language: objective-c
         before_install:
           - brew update
-          - brew install nvm
+          - brew upgrade carthage ios-webkit-debug-proxy nvm
+          - brew install carthage ios-webkit-debug-proxy nvm
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
-          - brew install ios-webkit-debug-proxy
         script:
           - make travis-ios
       - os: osx
@@ -49,10 +49,10 @@ matrix:
         language: objective-c
         before_install:
           - brew update
-          - brew install nvm
+          - brew upgrade carthage ios-webkit-debug-proxy nvm
+          - brew install carthage ios-webkit-debug-proxy nvm
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
-          - brew install ios-webkit-debug-proxy
         script:
           - make travis-ios-safari
       - os: linux
