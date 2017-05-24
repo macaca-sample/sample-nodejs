@@ -44,7 +44,7 @@ var androidOpts = {
 };
 
 const isIOS = platform === 'ios';
-const infoBoardId = isIOS ? 'info' : 'com.github.android_app_bootstrap:id/info';
+const infoBoardXPath = isIOS ? '//*[@name="info"]' : '//*[@resource-id="com.github.android_app_bootstrap:id/info"]';
 
 const wd = require('macaca-wd');
 
@@ -119,8 +119,8 @@ describe('macaca mobile sample', function() {
             x: 100,
             y: 100
           })
-          .sleep(5000)
-          .elementById(infoBoardId)
+          .sleep(1000)
+          .elementByXPath(infoBoardXPath)
           .text()
           .then(text => {
             JSON.stringify(text).should.containEql('singleTap');
@@ -137,7 +137,7 @@ describe('macaca mobile sample', function() {
       })
       .then(() => {
         return driver
-          .waitForElementById(infoBoardId)
+          .waitForElementByXPath(infoBoardXPath)
           .touch('pinch', {
             scale: 2,      // only for iOS
             velocity: 1,   // only for iOS
