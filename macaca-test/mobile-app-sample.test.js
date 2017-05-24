@@ -173,6 +173,7 @@ describe('macaca mobile sample', function() {
   it('#5 should go into webview', function() {
     return driver
       .customback()
+      .sleep(3000)
       .elementById('Webview')
       .click()
       .sleep(3000)
