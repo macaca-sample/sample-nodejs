@@ -45,6 +45,7 @@ var androidOpts = {
 
 const isIOS = platform === 'ios';
 const infoBoardXPath = isIOS ? '//*[@name="info"]' : '//*[@resource-id="com.github.android_app_bootstrap:id/info"]';
+const webviewButtonXPath = isIOS ? '//*[@name="Webview"]' : '//*[@resource-id="android:id/tabs"]/android.widget.LinearLayout[2]';
 
 const wd = require('macaca-wd');
 
@@ -174,7 +175,7 @@ describe('macaca mobile sample', function() {
     return driver
       .customback()
       .sleep(3000)
-      .elementById('Webview')
+      .elementByXPath(webviewButtonXPath)
       .click()
       .sleep(3000)
       .takeScreenshot()
