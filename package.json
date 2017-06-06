@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "blink-diff": "^1.0.13",
+    "detect-port": "^1.1.4",
     "macaca-cli": "^2.0.0",
     "macaca-simple-reportor": "^1.0.0",
     "macaca-utils": "^0.1.8",

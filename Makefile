@@ -1,5 +1,6 @@
 git_version = $$(git branch 2>/dev/null | sed -e '/^[^*]/d'-e's/* \(.*\)/\1/')
 npm_bin= $$(npm bin)
+custom_port = `${npm_bin}/detect-port 3458 -s`
 
 all: test
 install:
@@ -55,5 +56,9 @@ custom-reporter:
 	npm install macaca-simple-reportor --save-dev
 	macaca doctor
 	CUSTOM_DIR=macaca-logs/desktop-browser-sample macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test/desktop-browser-sample.test.js
+custom-port:
+	#npm install macaca-electron --save-dev
+	${npm_bin}/macaca doctor
+	MACACA_SERVER_PORT=${custom_port} browser=electron ${npm_bin}/macaca run --no-window --verbose -d ./macaca-test/desktop-browser-sample.test.js -p ${custom_port}
 
 .PHONY: test-pc

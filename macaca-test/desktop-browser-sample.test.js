@@ -6,6 +6,8 @@ const wd = require('macaca-wd');
 
 const diffImage = require('./utils.js').diffImage;
 
+
+
 var browser = process.env.browser || 'electron';
 browser = browser.toLowerCase();
 
@@ -14,7 +16,7 @@ describe('macaca desktop sample', function() {
 
   var driver = wd.promiseChainRemote({
     host: 'localhost',
-    port: 3456
+    port: process.env.MACACA_SERVER_PORT || 3456
   });
 
   before(() => {
