@@ -57,7 +57,7 @@ custom-reporter:
 	macaca doctor
 	CUSTOM_DIR=macaca-logs/desktop-browser-sample macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test/desktop-browser-sample.test.js
 custom-port:
-	#npm install macaca-electron --save-dev
+	npm install macaca-electron --save-dev
 	${npm_bin}/macaca doctor
 	MACACA_SERVER_PORT=${custom_port} browser=electron ${npm_bin}/macaca run --no-window --verbose -d ./macaca-test/desktop-browser-sample.test.js -p ${custom_port}
 
