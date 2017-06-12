@@ -54,6 +54,8 @@ module.exports = (wd, isIOS) => {
       .clear()
       .sendKeys(password)
       .keys(`${KEY_MAP.ENTER}${KEY_MAP.ESCAPE}`)
+      .sleep(1000)
+      .source()
       .waitForElementByName('Login')
       .click()
       .sleep(5000);
