@@ -77,10 +77,12 @@ describe('macaca mobile sample', function() {
 
   it('#1 should login success', function() {
     return driver
+      /*
       .title()
       .then(data => {
         console.log(`current focus ${isIOS ? 'viewController' : 'activity'}: ${data}`);
       })
+      */
       .getWindowSize()
       .then(size => {
         console.log(`current window size ${JSON.stringify(size)}`);
