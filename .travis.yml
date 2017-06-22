@@ -38,7 +38,7 @@ matrix:
         before_install:
           - brew update
           - brew install ios-webkit-debug-proxy nvm
-          - brew upgrade carthage ios-webkit-debug-proxy nvm
+          - brew upgrade carthage ios-webkit-debug-proxy nvm > /dev/null 2>&1
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
         script:
@@ -50,7 +50,7 @@ matrix:
         before_install:
           - brew update
           - brew install ios-webkit-debug-proxy nvm
-          - brew upgrade carthage ios-webkit-debug-proxy nvm
+          - brew upgrade carthage ios-webkit-debug-proxy nvm > /dev/null 2>&1
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
         script:
