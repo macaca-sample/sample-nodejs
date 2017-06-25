@@ -25,7 +25,7 @@ const pkg = require('../package');
 var iOSOpts = {
   deviceName: 'iPhone 6s',
   platformName: 'iOS',
-  autoAcceptAlerts: false,
+  //autoAcceptAlerts: true,
   //reuse: 3,
   //udid: '',
   //bundleId: 'xudafeng.ios-app-bootstrap',

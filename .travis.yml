@@ -37,8 +37,12 @@ matrix:
         language: objective-c
         before_install:
           - brew update
-          - brew install ios-webkit-debug-proxy nvm
-          - brew upgrade carthage ios-webkit-debug-proxy nvm > /dev/null 2>&1
+          - brew install carthage > /dev/null 2>&1
+          - brew install ios-webkit-debug-proxy > /dev/null 2>&1
+          - brew install nvm > /dev/null 2>&1
+          - brew upgrade carthage > /dev/null 2>&1
+          - brew upgrade ios-webkit-debug-proxy > /dev/null 2>&1
+          - brew upgrade nvm > /dev/null 2>&1
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
         script:
@@ -49,8 +53,12 @@ matrix:
         language: objective-c
         before_install:
           - brew update
-          - brew install ios-webkit-debug-proxy nvm
-          - brew upgrade carthage ios-webkit-debug-proxy nvm > /dev/null 2>&1
+          - brew install carthage > /dev/null 2>&1
+          - brew install ios-webkit-debug-proxy > /dev/null 2>&1
+          - brew install nvm > /dev/null 2>&1
+          - brew upgrade carthage > /dev/null 2>&1
+          - brew upgrade ios-webkit-debug-proxy > /dev/null 2>&1
+          - brew upgrade nvm > /dev/null 2>&1
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
         script:
