@@ -40,7 +40,6 @@ matrix:
           - brew install carthage > /dev/null 2>&1
           - brew install ios-webkit-debug-proxy > /dev/null 2>&1
           - brew install nvm > /dev/null 2>&1
-          - brew upgrade carthage > /dev/null 2>&1
           - brew upgrade ios-webkit-debug-proxy > /dev/null 2>&1
           - brew upgrade nvm > /dev/null 2>&1
           - source $(brew --prefix nvm)/nvm.sh
@@ -56,7 +55,6 @@ matrix:
           - brew install carthage > /dev/null 2>&1
           - brew install ios-webkit-debug-proxy > /dev/null 2>&1
           - brew install nvm > /dev/null 2>&1
-          - brew upgrade carthage > /dev/null 2>&1
           - brew upgrade ios-webkit-debug-proxy > /dev/null 2>&1
           - brew upgrade nvm > /dev/null 2>&1
           - source $(brew --prefix nvm)/nvm.sh
