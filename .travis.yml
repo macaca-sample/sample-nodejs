@@ -44,7 +44,7 @@ matrix:
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
           - npm i ios-simulator -g
-          - open -a Simulator --args -CurrentDeviceUDID `ios-simulator -n 'iPhone 6s'` &
+          - open -a Simulator --args -CurrentDeviceUDID `ios-simulator -n 'iPhone 6s'` > /dev/null 2>&1
         script:
           - make travis-ios
       - os: osx
@@ -60,7 +60,7 @@ matrix:
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
           - npm i ios-simulator -g
-          - open -a Simulator --args -CurrentDeviceUDID `ios-simulator -n 'iPhone 6s'` &
+          - open -a Simulator --args -CurrentDeviceUDID `ios-simulator -n 'iPhone 6s'` > /dev/null 2>&1
         script:
           - make travis-ios-safari
       - os: linux
