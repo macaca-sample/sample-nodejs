@@ -40,8 +40,11 @@ matrix:
           - brew install carthage > /dev/null 2>&1
           - brew install ios-webkit-debug-proxy > /dev/null 2>&1
           - brew install nvm > /dev/null 2>&1
+        before_script:
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
+          - npm i ios-simulator -g
+          - open -a Simulator --args -CurrentDeviceUDID `ios-simulator -n 'iPhone 6s'` > /dev/null 2>&1
         script:
           - make travis-ios
       - os: osx
@@ -53,8 +56,11 @@ matrix:
           - brew install carthage > /dev/null 2>&1
           - brew install ios-webkit-debug-proxy > /dev/null 2>&1
           - brew install nvm > /dev/null 2>&1
+        before_script:
           - source $(brew --prefix nvm)/nvm.sh
           - nvm install 7
+          - npm i ios-simulator -g
+          - open -a Simulator --args -CurrentDeviceUDID `ios-simulator -n 'iPhone 6s'` > /dev/null 2>&1
         script:
           - make travis-ios-safari
       - os: linux
