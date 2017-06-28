@@ -6,6 +6,8 @@ const _ = require('macaca-utils');
 var browserName = process.env.browser || 'safari';
 browserName = browserName.toLowerCase();
 
+const pkg = require('../package');
+
 const iOSSafariOpts = {
   deviceName: 'iPhone 6',
   platformName: 'iOS',
@@ -46,23 +48,24 @@ describe('macaca mobile sample', function() {
   it('#0 should works with macaca', function() {
     return driver
       .get('https://www.baidu.com')
-      .elementById('index-kw')
-      .sendKeys('macaca')
-      .elementById('index-bn')
-      .click()
-      .sleep(5000)
-      .source()
-      .then(html => {
-        html.should.containEql('macaca');
+      .sleep(10 * 1000)
+      .title()
+      .then(title => {
+        console.log(`title: ${title}`);
       })
-      .takeScreenshot();
-  });
-
-  it('#1 should works with web', function() {
-    return driver
-      .get('https://www.baidu.com')
+      .url()
+      .then(url => {
+        console.log(`url: ${url}`);
+      })
+      .refresh()
+      .sleep(2000)
       .elementById('index-kw')
-      .sendKeys('Macaca')
+      .getProperty('name')
+      .then(info => {
+        console.log(`get web attribute name: ${JSON.stringify(info)}`);
+      })
+      .waitForElementById('index-kw')
+      .sendKeys('中文+Macaca')
       .elementById('index-bn')
       .click()
       .sleep(5000)
@@ -70,6 +73,8 @@ describe('macaca mobile sample', function() {
       .then(html => {
         html.should.containEql('Macaca');
       })
+      .execute(`document.body.innerHTML = "<h1>${pkg.name}</h1>"`)
+      .sleep(3000)
       .takeScreenshot();
   });
 
