@@ -66,7 +66,8 @@ describe('macaca mobile sample', function() {
 
   before(function() {
     return driver
-      .init(isIOS ? iOSOpts : androidOpts);
+      .init(isIOS ? iOSOpts : androidOpts)
+      .sleep(10 * 1000);
   });
 
   after(function() {

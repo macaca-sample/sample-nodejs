@@ -33,7 +33,8 @@ describe('macaca mobile sample', function() {
 
   before(function() {
     return driver
-      .init(browserName === 'safari' ? iOSSafariOpts : AndroidChromeOpts);
+      .init(browserName === 'safari' ? iOSSafariOpts : AndroidChromeOpts)
+      .sleep(10 * 1000);
   });
 
   after(function() {
@@ -44,7 +45,7 @@ describe('macaca mobile sample', function() {
 
   it('#0 should works with macaca', function() {
     return driver
-      .get('http://www.baidu.com')
+      .get('https://www.baidu.com')
       .elementById('index-kw')
       .sendKeys('macaca')
       .elementById('index-bn')
