@@ -25,7 +25,7 @@ test-android:
 	macaca doctor
 	platform=android macaca run --verbose -d ./macaca-test/mobile-app-sample.test.js
 travis-android: install
-	npm install macaca-android --save-dev
+	CHROMEDRIVER_VERSION=2.20 npm install macaca-android --save-dev
 	${npm_bin}/macaca doctor
 	platform=android ${npm_bin}/macaca run --verbose -d ./macaca-test/mobile-app-sample.test.js
 test-ios-safari:
@@ -39,7 +39,7 @@ test-android-chrome:
 	macaca doctor
 	browser=chrome macaca run --verbose -d ./macaca-test/mobile-browser-sample.test.js
 travis-android-chrome: install
-	npm install macaca-android --save-dev
+	CHROMEDRIVER_VERSION=2.20 npm install macaca-android --save-dev
 	${npm_bin}/macaca doctor
 	browser=chrome ${npm_bin}/macaca run --verbose -d ./macaca-test/mobile-browser-sample.test.js
 test-desktop-electron:
