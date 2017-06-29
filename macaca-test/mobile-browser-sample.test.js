@@ -58,7 +58,7 @@ describe('macaca mobile sample', function() {
         console.log(`url: ${url}`);
       })
       .refresh()
-      .sleep(2000)
+      .sleep(10 * 1000)
       .elementById('index-kw')
       .getProperty('name')
       .then(info => {
