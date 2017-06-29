@@ -33,6 +33,10 @@ describe('macaca mobile sample', function() {
     timeout: 600 * 1000
   });
 
+  if (browserName !== 'safari') {
+    return
+  }
+
   before(function() {
     return driver
       .init(browserName === 'safari' ? iOSSafariOpts : AndroidChromeOpts)
