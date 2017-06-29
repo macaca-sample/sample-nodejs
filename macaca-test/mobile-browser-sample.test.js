@@ -33,6 +33,10 @@ describe('macaca mobile sample', function() {
     timeout: 600 * 1000
   });
 
+  if (browserName !== 'safari') {
+    return
+  }
+
   before(function() {
     return driver
       .init(browserName === 'safari' ? iOSSafariOpts : AndroidChromeOpts)
@@ -58,7 +62,7 @@ describe('macaca mobile sample', function() {
         console.log(`url: ${url}`);
       })
       .refresh()
-      .sleep(2000)
+      .sleep(10 * 1000)
       .elementById('index-kw')
       .getProperty('name')
       .then(info => {
