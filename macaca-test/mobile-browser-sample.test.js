@@ -33,9 +33,7 @@ describe('macaca mobile sample', function() {
     timeout: 600 * 1000
   });
 
-  if (browserName !== 'safari') {
-    return
-  }
+  return;
 
   before(function() {
     return driver
