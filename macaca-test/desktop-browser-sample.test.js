@@ -1,12 +1,11 @@
 'use strict';
 
 require('should');
+const fs = require('fs');
 const path = require('path');
 const wd = require('macaca-wd');
 
 const diffImage = require('./utils.js').diffImage;
-
-
 
 var browser = process.env.browser || 'electron';
 browser = browser.toLowerCase();
@@ -26,7 +25,6 @@ describe('macaca desktop sample', function() {
         browserName: browser,
         userAgent: `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0 Safari/537.36 Macaca Custom UserAgent`
       })
-      .maximize()
       .setWindowSize(1280, 800);
   });
 
@@ -38,10 +36,12 @@ describe('macaca desktop sample', function() {
       .execute(`document.querySelector('#select').selectedIndex = 1`)
       .sleep(1000)
       .elementById('select')
+      /*
       .getProperty('value')
       .then(value => {
         value.should.be.equal('2');
       })
+      */
       .execute(`
         var element = document.querySelector('#hover_text');
         var event = document.createEvent('MouseEvent');
