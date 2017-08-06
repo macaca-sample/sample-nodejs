@@ -120,7 +120,7 @@ describe('macaca desktop sample', function() {
   });
 
   it('#3 should works with iframe', function() {
-    const iframeURL = 'https://rawgit.com/xudafeng/use-tinyMce-textEditor/master/index.html';
+    const iframeURL = 'https://xudafeng.github.io/use-tinyMce-textEditor/';
 
     return driver
       .get(iframeURL)
