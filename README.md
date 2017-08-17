@@ -32,6 +32,7 @@ make test-ios               Test sample for iOS
 make test-android           Test sample for Android
 make test-ios-safari        Test sample for iOS Safari
 make test-android-chrome    Test sample for Android Chrome
+make test-desktop-puppeteer Test sample for Desktop PC
 make test-desktop-electron  Test sample for Desktop PC
 make test-desktop-chrome    Test sample for Desktop PC
 make custom-reporter        Test sample for PC with custom reporter
