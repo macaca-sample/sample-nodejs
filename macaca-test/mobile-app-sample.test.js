@@ -52,7 +52,7 @@ const wd = require('macaca-wd');
 // override custom wd
 require('./wd-extend')(wd, isIOS);
 
-describe('macaca mobile sample', function() {
+describe('mobile-app-sample.test.js', function() {
   this.timeout(10 * 60 * 1000);
 
   const driver = wd.promiseChainRemote({
@@ -76,177 +76,193 @@ describe('macaca mobile sample', function() {
       .quit();
   });
 
-  it('#1 should login success', function() {
-    return driver
-      /*
-      .title()
-      .then(data => {
-        console.log(`current focus ${isIOS ? 'viewController' : 'activity'}: ${data}`);
-      })
-      */
-      .getWindowSize()
-      .then(size => {
-        console.log(`current window size ${JSON.stringify(size)}`);
-      })
-      .appLogin('中文+Test+12345678', '111111');
+  describe('login page test', function() {
+
+    it('#0 should login success', function() {
+      return driver
+        /*
+        .title()
+        .then(data => {
+          console.log(`current focus ${isIOS ? 'viewController' : 'activity'}: ${data}`);
+        })
+        */
+        .getWindowSize()
+        .then(size => {
+          console.log(`current window size ${JSON.stringify(size)}`);
+        })
+        .appLogin('中文+Test+12345678', '111111');
+    });
+
   });
 
-  it('#2 should display home', function() {
-    return driver
-      .source()
-      .then(res => {
-        console.log(res);
-      })
-      .takeScreenshot();
+  describe('home page test', function() {
+
+    it('#0 should display home', function() {
+      return driver
+        .source()
+        .then(res => {
+          console.log(res);
+        });
+    });
+
   });
 
-  it('#3 should scroll tableview', function() {
-    return driver
-      .testGetProperty()
-      .waitForElementByName('HOME')
-      .click()
-      .waitForElementByName('list')
-      .click()
-      .sleep(2000);
+  describe('list page test', function() {
+
+    it('#0 should scroll tableview', function() {
+      return driver
+        .testGetProperty()
+        .waitForElementByName('HOME')
+        .click()
+        .waitForElementByName('list')
+        .click()
+        .sleep(2000);
+    });
+
   });
 
-  it('#4 should cover gestrure', function() {
-    return driver
-      .waitForElementByName('Alert')
-      .click()
-      .sleep(5000)
-      .acceptAlert()
-      .sleep(1000)
-      .customback()
-      .waitForElementByName('Gesture')
-      .click()
-      .sleep(5000)
-      .then(() => {
-        return driver
-          .touch('tap', {
-            x: 100,
-            y: 100
-          })
-          .sleep(1000)
-          .elementByXPath(infoBoardXPath)
-          .text()
-          .then(text => {
-            JSON.stringify(text).should.containEql('singleTap');
-          });
-      })
-      .then(() => {
-        return driver
-          .touch('press', {
-            x: 100,
-            y: 100,
-            duration: 2
-          })
-          .sleep(1000);
-      })
-      .then(() => {
-        return driver
-          .waitForElementByXPath(infoBoardXPath)
-          .touch('pinch', {
-            scale: 2,      // only for iOS
-            velocity: 1,   // only for iOS
-            direction: 'in',// only for Android
-            percent: 0.2,  // only for Android
-            steps: 200     // only for Android
-          })
-          .sleep(1000);
-      })
-      /*
-      // TODO Android rotate
-      .then(() => {
-        return driver
-          .touch('rotate', {
-          })
-          .sleep(1000);
-      })*/
-      .customback()
-      .then(() => {
-        return driver
-          .touch('drag', {
-            fromX: 100,
-            fromY: 600,
-            toX: 100,
-            toY: 100,
-            duration: 3
-          })
-          .sleep(1000);
-      })
-      .sleep(1000);
+  describe('gestrure page test', function() {
+
+    it('#0 should cover gestrure', function() {
+      return driver
+        .waitForElementByName('Alert')
+        .click()
+        .sleep(5000)
+        .acceptAlert()
+        .sleep(1000)
+        .customback()
+        .waitForElementByName('Gesture')
+        .click()
+        .sleep(5000)
+        .then(() => {
+          return driver
+            .touch('tap', {
+              x: 100,
+              y: 100
+            })
+            .sleep(1000)
+            .elementByXPath(infoBoardXPath)
+            .text()
+            .then(text => {
+              JSON.stringify(text).should.containEql('singleTap');
+            });
+        })
+        .then(() => {
+          return driver
+            .touch('press', {
+              x: 100,
+              y: 100,
+              duration: 2
+            })
+            .sleep(1000);
+        })
+        .then(() => {
+          return driver
+            .waitForElementByXPath(infoBoardXPath)
+            .touch('pinch', {
+              scale: 2,      // only for iOS
+              velocity: 1,   // only for iOS
+              direction: 'in',// only for Android
+              percent: 0.2,  // only for Android
+              steps: 200     // only for Android
+            })
+            .sleep(1000);
+        })
+        /*
+        // TODO Android rotate
+        .then(() => {
+          return driver
+            .touch('rotate', {
+            })
+            .sleep(1000);
+        })*/
+        .customback()
+        .then(() => {
+          return driver
+            .touch('drag', {
+              fromX: 100,
+              fromY: 600,
+              toX: 100,
+              toY: 100,
+              duration: 3
+            })
+            .sleep(1000);
+        })
+        .sleep(1000);
+    });
+
   });
 
-  it('#5 should go into webview', function() {
-    return driver
-      .customback()
-      .sleep(3000)
-      .elementByXPath(webviewButtonXPath)
-      .click()
-      .sleep(3000)
-      .takeScreenshot()
-      .changeToWebviewContext()
-      .elementById('pushView')
-      .click()
-      .changeToWebviewContext()
-      .waitForElementById('popView')
-      .click()
-      .sleep(5000)
-      .takeScreenshot();
+  describe('webview page test', function() {
+
+    it('#0 should go into webview', function() {
+      return driver
+        .customback()
+        .sleep(3000)
+        .elementByXPath(webviewButtonXPath)
+        .click()
+        .sleep(3000)
+        .changeToWebviewContext()
+        .elementById('pushView')
+        .click()
+        .changeToWebviewContext()
+        .waitForElementById('popView')
+        .click()
+        .sleep(5000);
+    });
+
+    it('#1 should go into test', function() {
+      return driver
+        .changeToNativeContext()
+        .waitForElementByName('Baidu')
+        .click()
+        .sleep(5000);
+    });
+
+    it('#2 should works with web', function() {
+      return driver
+        .changeToWebviewContext()
+        .title()
+        .then(title => {
+          console.log(`title: ${title}`);
+        })
+        .url()
+        .then(url => {
+          console.log(`url: ${url}`);
+        })
+        .refresh()
+        .sleep(2000)
+        .elementById('index-kw')
+        .getProperty('name')
+        .then(info => {
+          console.log(`get web attribute name: ${JSON.stringify(info)}`);
+        })
+        .waitForElementById('index-kw')
+        .sendKeys('中文+Macaca')
+        .elementById('index-bn')
+        .click()
+        .sleep(5000)
+        .source()
+        .then(html => {
+          html.should.containEql('Macaca');
+        })
+        .execute(`document.body.innerHTML = "<h1>${pkg.name}</h1>"`)
+        .sleep(3000);
+    });
+
   });
 
-  it('#6 should go into test', function() {
-    return driver
-      .changeToNativeContext()
-      .waitForElementByName('Baidu')
-      .click()
-      .sleep(5000)
-      .takeScreenshot();
-  });
+  describe('logout page test', function() {
 
-  it('#7 should works with web', function() {
-    return driver
-      .changeToWebviewContext()
-      .title()
-      .then(title => {
-        console.log(`title: ${title}`);
-      })
-      .url()
-      .then(url => {
-        console.log(`url: ${url}`);
-      })
-      .refresh()
-      .sleep(2000)
-      .elementById('index-kw')
-      .getProperty('name')
-      .then(info => {
-        console.log(`get web attribute name: ${JSON.stringify(info)}`);
-      })
-      .waitForElementById('index-kw')
-      .sendKeys('中文+Macaca')
-      .elementById('index-bn')
-      .click()
-      .sleep(5000)
-      .source()
-      .then(html => {
-        html.should.containEql('Macaca');
-      })
-      .execute(`document.body.innerHTML = "<h1>${pkg.name}</h1>"`)
-      .sleep(3000)
-      .takeScreenshot();
-  });
-
-  it('#8 should logout success', function() {
-    return driver
-      .changeToNativeContext()
-      .waitForElementByName('PERSONAL')
-      .click()
-      .sleep(1000)
-      .takeScreenshot()
-      .waitForElementByName('Logout')
-      .click()
-      .sleep(1000)
-      .takeScreenshot();
+    it('#0 should logout success', function() {
+      return driver
+        .changeToNativeContext()
+        .waitForElementByName('PERSONAL')
+        .click()
+        .sleep(1000)
+        .waitForElementByName('Logout')
+        .click()
+        .sleep(1000);
+    });
   });
 });
