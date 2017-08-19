@@ -54,6 +54,10 @@ test-desktop-chrome:
 	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
 test-desktop-puppeteer:
 	browser=puppeteer macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
+travis-desktop-puppeteer:
+	npm install macaca-puppeteer --save-dev
+	${npm_bin}/macaca doctor
+	browser=puppeteer macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
 custom-reporter:
 	npm install macaca-simple-reportor --save-dev
 	macaca doctor
