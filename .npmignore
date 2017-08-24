@@ -12,3 +12,5 @@ screenshot/
 macaca-logs/
 *.sw*
 *.un~
+reports/
+screenshots/

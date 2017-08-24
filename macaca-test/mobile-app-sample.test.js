@@ -76,6 +76,12 @@ describe('mobile-app-sample.test.js', function() {
       .quit();
   });
 
+  beforeEach(function() {
+    return driver
+      .customSaveScreenshot(this)
+      .sleep(1000)
+  });
+
   describe('login page test', function() {
 
     it('#0 should login success', function() {
