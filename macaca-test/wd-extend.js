@@ -1,6 +1,9 @@
 'use strict';
 
+const path = require('path');
+const _ = require('macaca-utils');
 const KEY_MAP = require('webdriver-keycode');
+const appendToContext = require('macaca-reporter').appendToContext;
 
 // npm package wrapper sample: https://github.com/macaca-sample/webdriver-client
 
@@ -143,6 +146,17 @@ module.exports = (wd, isIOS) => {
       .getProperty('description') // content-desc
       .then(d => {
         console.log(d);
+      });
+  });
+
+  wd.addPromiseChainMethod('customSaveScreenshot', function(context) {
+    var filepath = path.join(__dirname, '..', 'screenshots', `${_.uuid()}.png`);
+    _.mkdir(path.dirname(filepath));
+
+    return this
+      .saveScreenshot(filepath)
+      .then(() => {
+        appendToContext(context, filepath);
       });
   });
 

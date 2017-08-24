@@ -18,6 +18,9 @@ test:
 test-ios:
 	macaca doctor
 	platform=ios macaca run --verbose -d ./macaca-test/mobile-app-sample.test.js
+test-ios-reporter:
+	macaca doctor
+	platform=ios macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js
 travis-ios: install
 	npm install macaca-ios --save-dev
 	${npm_bin}/macaca doctor
@@ -53,6 +56,10 @@ test-desktop-chrome:
 	macaca doctor
 	CHROMEDRIVER_VERSION=2.30 browser=chrome macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
 test-desktop-puppeteer:
+	browser=puppeteer macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
+travis-desktop-puppeteer:
+	npm install macaca-puppeteer --save-dev
+	${npm_bin}/macaca doctor
 	browser=puppeteer macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js
 custom-reporter:
 	npm install macaca-simple-reportor --save-dev
