@@ -18,6 +18,9 @@ test:
 test-ios:
 	macaca doctor
 	platform=ios macaca run --verbose -d ./macaca-test/mobile-app-sample.test.js
+test-ios-reporter:
+	macaca doctor
+	platform=ios macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js
 travis-ios: install
 	npm install macaca-ios --save-dev
 	${npm_bin}/macaca doctor
