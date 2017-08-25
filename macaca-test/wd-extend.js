@@ -150,13 +150,14 @@ module.exports = (wd, isIOS) => {
   });
 
   wd.addPromiseChainMethod('customSaveScreenshot', function(context) {
-    var filepath = path.join(__dirname, '..', 'screenshots', `${_.uuid()}.png`);
+    const filepath = path.join(__dirname, '..', 'screenshots', `${_.uuid()}.png`);
+    const reportspath = path.join(__dirname, '..', 'reports');
     _.mkdir(path.dirname(filepath));
 
     return this
       .saveScreenshot(filepath)
       .then(() => {
-        appendToContext(context, filepath);
+        appendToContext(context, `${path.relative(reportspath, filepath)}`);
       });
   });
 
