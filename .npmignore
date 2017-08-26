@@ -7,7 +7,6 @@ examples/
 .jshintrc
 .jshintignore
 coverage/
-macaca-logs/
 screenshot/
 macaca-logs/
 *.sw*
