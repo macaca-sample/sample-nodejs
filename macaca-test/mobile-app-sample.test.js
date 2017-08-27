@@ -52,7 +52,7 @@ const wd = require('macaca-wd');
 // override custom wd
 require('./wd-extend')(wd, isIOS);
 
-describe('mobile-app-sample.test.js', function() {
+describe('macaca-test/mobile-app-sample.test.js', function() {
   this.timeout(10 * 60 * 1000);
 
   const driver = wd.promiseChainRemote({
@@ -76,7 +76,7 @@ describe('mobile-app-sample.test.js', function() {
       .quit();
   });
 
-  beforeEach(function() {
+  afterEach(function() {
     return driver
       .customSaveScreenshot(this)
       .sleep(1000)

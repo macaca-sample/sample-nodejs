@@ -15,11 +15,10 @@
     "blink-diff": "^1.0.13",
     "detect-port": "^1.1.4",
     "macaca-cli": "*",
-    "macaca-reporter": "^1.0.7",
+    "macaca-reporter": "^1.0.10",
     "macaca-simple-reportor": "^1.0.0",
     "macaca-utils": "*",
     "macaca-wd": "^1.0.16",
-    "should": "^11.1.2",
     "webdriver-keycode": "^1.0.2"
   },
   "license": "MIT"
