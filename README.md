@@ -38,7 +38,7 @@ $ make test-android-chrome    Test sample for Android Chrome
 $ make test-desktop-puppeteer Test sample for Desktop PC
 $ make test-desktop-electron  Test sample for Desktop PC
 $ make test-desktop-chrome    Test sample for Desktop PC
-$ make custom-reporter        Test sample for PC with custom reporter
+$ make simple-reporter        Test sample for PC with simple reporter
 ```
 
 **Keep in mind, you have to open an android emulator if you want to run it against an emulator, before you run 'make test-android'**
