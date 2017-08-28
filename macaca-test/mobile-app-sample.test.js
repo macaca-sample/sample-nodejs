@@ -1,6 +1,8 @@
 'use strict';
 
 require('should');
+const opn = require('opn');
+const path = require('path');
 const KEY_MAP = require('webdriver-keycode');
 
 var platform = process.env.platform || 'iOS';
@@ -71,6 +73,8 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
   });
 
   after(function() {
+    opn(path.join(__dirname, '..', 'reports', 'index.html'));
+
     return driver
       .sleep(1000)
       .quit();

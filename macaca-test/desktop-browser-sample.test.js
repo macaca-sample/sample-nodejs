@@ -2,6 +2,7 @@
 
 require('should');
 const fs = require('fs');
+const opn = require('opn');
 const path = require('path');
 const wd = require('macaca-wd');
 
@@ -35,6 +36,10 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
     return driver
       .customSaveScreenshot(this)
       .sleep(1000)
+  });
+
+  after(function() {
+    opn(path.join(__dirname, '..', 'reports', 'index.html'));
   });
 
   describe('macaca desktop sample', function() {

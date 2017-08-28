@@ -1,6 +1,8 @@
 'use strict';
 
 require('should');
+const opn = require('opn');
+const path = require('path');
 const _ = require('macaca-utils');
 
 var browserName = process.env.browser || 'safari';
@@ -39,6 +41,10 @@ describe('macaca-test/mobile-browser-sample.test.js', function() {
     return driver
       .customSaveScreenshot(this)
       .sleep(1000)
+  });
+
+  after(function() {
+    opn(path.join(__dirname, '..', 'reports', 'index.html'));
   });
 
   describe('macaca mobile sample', function() {
