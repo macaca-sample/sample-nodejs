@@ -256,7 +256,6 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         .then(html => {
           html.should.containEql('Macaca');
         })
-        .execute(`document.body.innerHTML = "<h1>${pkg.name}</h1>"`)
         .sleep(3000);
     });
 
