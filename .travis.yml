@@ -33,8 +33,10 @@ matrix:
     include:
       - os: osx
         env: TEST_SUITE=ios
-        osx_image: xcode8.3
-        language: objective-c
+        osx_image:
+          - xcode9
+        language:
+          - objective-c
         before_install:
           - brew update
           - brew install carthage > /dev/null 2>&1
@@ -49,8 +51,10 @@ matrix:
           - make travis-ios
       - os: osx
         env: TEST_SUITE=ios-browser
-        osx_image: xcode8.3
-        language: objective-c
+        osx_image:
+          - xcode9
+        language:
+          - objective-c
         before_install:
           - brew update
           - brew install carthage > /dev/null 2>&1
