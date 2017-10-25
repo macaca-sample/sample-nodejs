@@ -6,6 +6,8 @@ const opn = require('opn');
 const path = require('path');
 const wd = require('macaca-wd');
 
+const pkg = require('../package');
+
 require('./wd-extend')(wd, false);
 
 const diffImage = require('./utils.js').diffImage;
@@ -49,6 +51,15 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
       return driver
         .get(`file://${url}`)
         .sleep(3000)
+        .setCookie({
+          url: pkg.homepage,
+          name: pkg.name,
+          value: pkg.name
+        })
+        .allCookies()
+        .then(d => {
+          console.log(d);
+        })
         .execute(`document.querySelector('#select').selectedIndex = 1`)
         .sleep(1000)
         .elementById('select')
