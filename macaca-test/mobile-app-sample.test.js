@@ -73,11 +73,14 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
   });
 
   after(function() {
-    opn(path.join(__dirname, '..', 'reports', 'index.html'));
 
     return driver
       .sleep(1000)
-      .quit();
+      .quit()
+      .sleep(1000)
+      .then(() => {
+        opn(path.join(__dirname, '..', 'reports', 'index.html'));
+      });
   });
 
   afterEach(function() {
