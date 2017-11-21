@@ -24,13 +24,13 @@ This reposistory contains various samples that demonstrate how to use Macaca to 
 
 run
 
-``` bash
+```bash
 $ make
 ```
 
 then select one from the following
 
-``` bash
+```bash
 $ make test-ios               Test sample for iOS
 $ make test-android           Test sample for Android
 $ make test-ios-safari        Test sample for iOS Safari
