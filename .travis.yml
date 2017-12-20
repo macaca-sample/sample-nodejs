@@ -7,6 +7,7 @@ env:
   - TEST_SUITE=ios-browser
   - TEST_SUITE=android-browser
   - TEST_SUITE=desktop-browser
+  - TEST_SUITE=android-docker
 matrix:
     fast_finish: true
     exclude:
@@ -20,6 +21,8 @@ matrix:
         env: TEST_SUITE=android-browser
       - os: osx
         env: TEST_SUITE=desktop-browser
+      - os: osx
+        env: TEST_SUITE=android-docker
       - os: linux
         env: TEST_SUITE=ios
       - os: linux
@@ -30,6 +33,8 @@ matrix:
         env: TEST_SUITE=android-browser
       - os: linux
         env: TEST_SUITE=desktop-browser
+      - os: linux
+        env: TEST_SUITE=android-docker
     include:
       - os: osx
         env: TEST_SUITE=ios
@@ -139,3 +144,16 @@ matrix:
           - 7
         script:
           - make travis-desktop-puppeteer
+      - os: linux
+        env: TEST_SUITE=android-docker
+        language: node_js
+        sudo: false
+        node_js:
+          - 8
+        sudo: required
+        services:
+          - docker
+        install:
+          - echo Hello docker!
+        script:
+          - make android-docker
