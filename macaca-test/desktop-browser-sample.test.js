@@ -69,12 +69,7 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
           value.should.be.equal('2');
         })
         */
-        .execute(`
-          var element = document.querySelector('#hover_text');
-          var event = document.createEvent('MouseEvent');
-          event.initMouseEvent('mouseover', true, true);
-          element.dispatchEvent(event);
-        `)
+        .mouseEvent('#hover_text', 'mouseover')
         .elementById('hover_text')
         .getComputedCss('color')
         .then(value => {
