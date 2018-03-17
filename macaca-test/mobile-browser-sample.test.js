@@ -1,9 +1,11 @@
 'use strict';
 
-require('should');
-const opn = require('opn');
 const path = require('path');
 const _ = require('macaca-utils');
+
+const {
+  opn
+} = _;
 
 var browserName = process.env.browser || 'safari';
 browserName = browserName.toLowerCase();

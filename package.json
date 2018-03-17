@@ -12,16 +12,16 @@
     "url": "git://github.com/macaca-sample/sample-nodejs.git"
   },
   "devDependencies": {
+    "android-app-bootstrap": "^1.0.8",
     "blink-diff": "^1.0.13",
-    "detect-port": "^1.1.4",
+    "chai": "^4.1.2",
+    "ios-app-bootstrap": "^1.0.11",
     "macaca-cli": "*",
     "macaca-reporter": "^1.0.10",
     "macaca-simple-reportor": "^1.0.0",
     "macaca-utils": "*",
     "macaca-wd": "^1.0.17",
     "mocha": "^4.0.1",
-    "opn": "^5.1.0",
-    "should": "^13.1.3",
     "webdriver-keycode": "^1.0.2"
   },
   "homepage": "https://macacajs.github.io",

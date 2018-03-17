@@ -1,26 +1,27 @@
 'use strict';
 
-require('should');
-const opn = require('opn');
 const path = require('path');
+const _ = require('macaca-utils');
 const KEY_MAP = require('webdriver-keycode');
+
+const {
+  assert
+} = require('chai');
+
+const iosApp = require('ios-app-bootstrap');
+const androidApp = require('android-app-bootstrap');
+
+console.log(`iOS App :${iosApp.appPath}`);
+console.log(`Android App :${androidApp.appPath}`);
+
+const {
+  opn
+} = _;
 
 var platform = process.env.platform || 'iOS';
 platform = platform.toLowerCase();
 
 const pkg = require('../package');
-
-/**
- * download app form npm
- *
- * or use online resource: https://npmcdn.com/ios-app-bootstrap@latest/build/ios-app-bootstrap.zip
- *
- * npm i ios-app-bootstrap --save-dev
- *
- * var opts = {
- *   app: path.join(__dirname, '..', 'node_modules', 'ios-app-bootstrap', 'build', 'ios-app-bootstrap.zip');
- * };
- */
 
 // see: https://macacajs.github.io/desired-caps
 
@@ -31,7 +32,7 @@ var iOSOpts = {
   //reuse: 3,
   //udid: '',
   //bundleId: 'xudafeng.ios-app-bootstrap',
-  app: 'https://npmcdn.com/ios-app-bootstrap@latest/build/ios-app-bootstrap.zip'
+  app: iosApp.appPath
 };
 
 var androidOpts = {
@@ -42,7 +43,7 @@ var androidOpts = {
   //udid: '',
   //package: 'com.github.android_app_bootstrap',
   //activity: 'com.github.android_app_bootstrap.activity.WelcomeActivity',
-  app: 'https://npmcdn.com/android-app-bootstrap@latest/android_app_bootstrap/build/outputs/apk/android_app_bootstrap-debug.apk'
+  app: androidApp.appPath
 };
 
 const isIOS = platform === 'ios';
@@ -73,44 +74,44 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
   });
 
   after(function() {
-
     return driver
       .sleep(1000)
       .quit()
       .sleep(1000)
       .then(() => {
-        opn(path.join(__dirname, '..', 'reports', 'index.html'));
+        opn(path.join(__dirname, '..', 'reports', 'index.html#image'));
       });
   });
 
-  afterEach(function() {
+  beforeEach(() => {
     return driver
-      .customSaveScreenshot(this)
-      .sleep(1000)
-  });
-
-  describe('login page test', function() {
-
-    it('#0 should login success', function() {
-      return driver
-        /*
+      /*
         .title()
         .then(data => {
           console.log(`current focus ${isIOS ? 'viewController' : 'activity'}: ${data}`);
         })
         */
-        .getWindowSize()
-        .then(size => {
-          console.log(`current window size ${JSON.stringify(size)}`);
-        })
-        .appLogin('中文+Test+12345678', '111111');
-    });
+      .getWindowSize()
+      .then(size => {
+        console.log(`current window size ${JSON.stringify(size)}`);
+      })
+      .appLogin('中文+Test+12345678', '111111');
+  });
 
+  afterEach(function() {
+    return driver
+      .customSaveScreenshot(this)
+      .changeToNativeContext()
+      .waitForElementByName('PERSONAL')
+      .click()
+      .sleep(1000)
+      .waitForElementByName('Logout')
+      .click()
+      .sleep(1000);
   });
 
   describe('home page test', function() {
-
-    it('#0 should display home', function() {
+    it('should display home', function() {
       return driver
         .source()
         .then(res => {
@@ -118,26 +119,14 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         });
     });
 
-  });
-
-  describe('list page test', function() {
-
-    it('#0 should scroll tableview', function() {
+    it('should goto tableview', function() {
       return driver
         .testGetProperty()
         .waitForElementByName('HOME')
         .click()
         .waitForElementByName('list')
         .click()
-        .sleep(2000);
-    });
-
-  });
-
-  describe('gestrure page test', function() {
-
-    it('#0 should cover gestrure', function() {
-      return driver
+        .sleep(1000)
         .waitForElementByName('Alert')
         .click()
         .sleep(5000)
@@ -157,7 +146,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
             .elementByXPath(infoBoardXPath)
             .text()
             .then(text => {
-              JSON.stringify(text).should.containEql('singleTap');
+              assert.include(JSON.stringify(text), 'singleTap');
             });
         })
         .then(() => {
@@ -199,19 +188,15 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
               toY: 100,
               duration: 3
             })
-            .sleep(1000);
+            .sleep(500);
         })
-        .sleep(1000);
+        .customback();
     });
-
   });
 
   describe('webview page test', function() {
-
-    it('#0 should go into webview', function() {
+    it('should go into webview', function() {
       return driver
-        .customback()
-        .sleep(3000)
         .elementByXPath(webviewButtonXPath)
         .click()
         .sleep(3000)
@@ -224,16 +209,11 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         .sleep(5000);
     });
 
-    it('#1 should go into test', function() {
+    it('should open remote url', function() {
       return driver
-        .changeToNativeContext()
         .waitForElementByName('Baidu')
         .click()
-        .sleep(5000);
-    });
-
-    it('#2 should works with web', function() {
-      return driver
+        .sleep(5000)
         .changeToWebviewContext()
         .title()
         .then(title => {
@@ -243,8 +223,6 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         .then(url => {
           console.log(`url: ${url}`);
         })
-        .refresh()
-        .sleep(2000)
         .elementById('index-kw')
         .getProperty('name')
         .then(info => {
@@ -257,24 +235,9 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         .sleep(5000)
         .source()
         .then(html => {
-          html.should.containEql('Macaca');
+          assert.include(html, 'Macaca');
         })
         .sleep(3000);
-    });
-
-  });
-
-  describe('logout page test', function() {
-
-    it('#0 should logout success', function() {
-      return driver
-        .changeToNativeContext()
-        .waitForElementByName('PERSONAL')
-        .click()
-        .sleep(1000)
-        .waitForElementByName('Logout')
-        .click()
-        .sleep(1000);
     });
   });
 });

@@ -1,8 +1,12 @@
 'use strict';
 
-require('should');
 const fs = require('fs');
-const opn = require('opn');
+const {
+  assert
+} = require('chai');
+const {
+  opn
+} = require('macaca-utils');
 const path = require('path');
 const wd = require('macaca-wd');
 
@@ -66,14 +70,14 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         /*
         .getProperty('value')
         .then(value => {
-          value.should.be.equal('2');
+          assert.ok(value);
         })
         */
         .mouseEvent('#hover_text', 'mouseover')
         .elementById('hover_text')
         .getComputedCss('color')
         .then(value => {
-          value.should.containEql('255');
+          assert.ok(value);
         })
         // https://github.com/macacajs/macaca-electron#windowalert
         .execute(`
@@ -89,7 +93,7 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         .elementById('alert_msg')
         .text()
         .then(value => {
-          value.should.containEql('this message is from alert');
+          assert.equal('this message is from alert');
         })
         .sleep(3000);
     });
@@ -108,6 +112,7 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         .sleep(5000)
         .source()
         .then(function(html) {
+          assert.equal('this message is from alert');
           html.should.containEql('macaca');
         })
         .hasElementByCss('#head > div.head_wrapper')

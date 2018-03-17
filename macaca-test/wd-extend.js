@@ -96,6 +96,9 @@ module.exports = (wd, isIOS) => {
             .window(handles[handles.length - 1]);
         }
       })
+      .catch(e => {
+        console.log(e);
+      })
       .sleep(1000);
   });
 
