@@ -66,5 +66,8 @@ custom-port:
 	npm i macaca-electron --save-dev
 	${npm_bin}/macaca doctor
 	MACACA_SERVER_PORT=${custom_port} browser=electron ${npm_bin}/macaca run --no-window --verbose -d ./macaca-test/desktop-browser-sample.test.js -p ${custom_port}
+android-docker:
+	docker build . -t="run-with-docker"
+	docker run -it --entrypoint=bash --rm run-with-docker -c "make travis-android"
 
 .PHONY: test-ios

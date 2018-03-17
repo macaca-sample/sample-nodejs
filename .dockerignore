@@ -1,0 +1,11 @@
+.git
+node_modules
+.travis.yml
+.jshintrc
+.jshintignore
+coverage
+*.sw*
+*.un~
+build
+output.jpg
+node_modules
