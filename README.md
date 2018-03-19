@@ -20,31 +20,25 @@ This reposistory contains various samples that demonstrate how to use Macaca to 
 6. desktop Chrome web app
 7. generate custom report for desktop web app
 
-## Usage
-
-run
-
-```bash
-$ make
-```
+## Start
 
 then select one from the following
 
 ```bash
-$ make test-ios               Test sample for iOS
-$ make test-android           Test sample for Android
-$ make test-ios-safari        Test sample for iOS Safari
-$ make test-android-chrome    Test sample for Android Chrome
-$ make test-desktop-puppeteer Test sample for Desktop PC
-$ make test-desktop-electron  Test sample for Desktop PC
-$ make test-desktop-chrome    Test sample for Desktop PC
-$ make simple-reporter        Test sample for PC with simple reporter
+$ npm i                          Install all the depedences
+$ npm run test:ios               Test sample for iOS
+$ npm run test:android           Test sample for Android
+$ npm run test:ios-safari        Test sample for iOS Safari
+$ npm run test:android-chrome    Test sample for Android Chrome
+$ npm run test:desktop-puppeteer Test sample for Desktop PC
+$ npm run test:desktop-electron  Test sample for Desktop PC
+$ npm run test:desktop-chrome    Test sample for Desktop PC
+$ npm run test:simple-reporter   Test sample for PC with simple reporter
 ```
 
-**Keep in mind, you have to open an android emulator if you want to run it against an emulator, before you run 'make test-android'**
+**Note**
 
-
-You can read `Makefile` to understand the detail of each command
+You have to open an android emulator if you want to run it against an emulator, before you run `npm run test:android`
 
 ## Source Code of Mobile Apps
 

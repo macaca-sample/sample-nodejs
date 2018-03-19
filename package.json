@@ -24,6 +24,27 @@
     "mocha": "^4.0.1",
     "webdriver-keycode": "^1.0.2"
   },
+  "optionalDependencies": {
+    "macaca-android": "*",
+    "macaca-chrome": "*",
+    "macaca-electron": "*",
+    "macaca-ios": "*",
+    "macaca-puppeteer": "*"
+  },
+  "scripts": {
+    "doctor": "macaca doctor",
+    "test:native": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js",
+    "test:mobile-browser": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js",
+    "test:desktop-browser": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js",
+    "test:ios": "platform=ios npm run test:native",
+    "test:android": "platform=android npm run test:native",
+    "test:ios-safari": "browser=safari npm run test:mobile-browser",
+    "test:android-chrome": "browser=chrome npm run test:mobile-browser",
+    "test:desktop-puppeteer": "browser=puppeteer npm run test:desktop-browser",
+    "test:desktop-electron": "browser=electron npm run test:desktop-browser",
+    "test:desktop-chrome": "browser=chrome npm run test:desktop-browser",
+    "test:simple-reporter": "CUSTOM_DIR=macaca-logs/desktop-browser-sample macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test/desktop-browser-sample.test.js"
+  },
   "homepage": "https://macacajs.github.io",
   "license": "MIT"
 }
