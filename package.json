@@ -15,6 +15,7 @@
     "android-app-bootstrap": "^1.0.8",
     "blink-diff": "^1.0.13",
     "chai": "^4.1.2",
+    "git-contributor": "^1.0.3",
     "ios-app-bootstrap": "^1.0.11",
     "macaca-cli": "*",
     "macaca-reporter": "^1.0.10",
@@ -43,7 +44,8 @@
     "test:desktop-puppeteer": "browser=puppeteer npm run test:desktop-browser",
     "test:desktop-electron": "browser=electron npm run test:desktop-browser",
     "test:desktop-chrome": "browser=chrome npm run test:desktop-browser",
-    "test:simple-reporter": "CUSTOM_DIR=macaca-logs/desktop-browser-sample macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test/desktop-browser-sample.test.js"
+    "test:simple-reporter": "CUSTOM_DIR=macaca-logs/desktop-browser-sample macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test/desktop-browser-sample.test.js",
+    "contributor": "git-contributor"
   },
   "homepage": "https://macacajs.github.io",
   "license": "MIT"
