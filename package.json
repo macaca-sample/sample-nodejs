@@ -36,7 +36,7 @@
     "doctor": "macaca doctor",
     "test:native": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js",
     "test:mobile-browser": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js",
-    "test:desktop-browser": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js",
+    "test:desktop-browser": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/desktop-browser-sample.test.js",
     "test:ios": "platform=ios npm run test:native",
     "test:android": "platform=android npm run test:native",
     "test:ios-safari": "browser=safari npm run test:mobile-browser",
