@@ -15,7 +15,7 @@
     "android-app-bootstrap": "^1.0.8",
     "blink-diff": "^1.0.13",
     "chai": "^4.1.2",
-    "git-contributor": "^1.0.3",
+    "git-contributor": "^1.0.8",
     "ios-app-bootstrap": "^1.0.11",
     "macaca-cli": "*",
     "macaca-reporter": "^1.0.10",
