@@ -35,7 +35,7 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         userAgent: `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0 Safari/537.36 Macaca Custom UserAgent`,
         deviceScaleFactor: 2
       })
-      .setWindowSize(1280, 800);
+      .setWindowSize(800, 600);
   });
 
   afterEach(function() {
@@ -44,8 +44,15 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
       .sleep(1000)
   });
 
-  after(function() {
-    opn(path.join(__dirname, '..', 'reports', 'index.html'));
+  after(() => {
+    return driver
+      .sleep(1000)
+      .quit()
+      .sleep(1000)
+      .then(() => {
+        const reporter = path.join(__dirname, '..', 'reports', 'index.html');
+        console.log(reporter);
+      });
   });
 
   describe('macaca desktop sample', function() {
@@ -93,7 +100,7 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         .elementById('alert_msg')
         .text()
         .then(value => {
-          assert.equal('this message is from alert');
+          assert(value, 'this message is from alert');
         })
         .sleep(3000);
     });
@@ -111,13 +118,12 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         .click()
         .sleep(5000)
         .source()
-        .then(function(html) {
-          assert.equal('this message is from alert');
-          html.should.containEql('macaca');
+        .then(html => {
+          assert.ok(html.includes('macaca'));
         })
         .hasElementByCss('#head > div.head_wrapper')
-        .then(function(hasHeadWrapper) {
-          hasHeadWrapper.should.be.true();
+        .then(hasHeadWrapper => {
+          assert.ok(hasHeadWrapper);
         })
         .elementByXPathOrNull('//*[@id="kw"]')
         .sendKeys(' elementByXPath')
@@ -140,8 +146,8 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         .click()
         .sleep(5000)
         .source()
-        .then(function(html) {
-          html.should.containEql('Macaca');
+        .then(html => {
+          assert.ok(html.includes('macaca'));
         })
         .saveScreenshot('pic2');
     });
@@ -167,16 +173,11 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
           return true || diffImage(oldImgPath, newImg, 0.1, diffImgPath);
         })
         .then(result => {
-          result.should.be.true();
+          assert(result, true);
         })
         .catch(e => {
           console.log(e);
         });
-    });
-
-    after(() => {
-      return driver
-        .quit();
     });
   });
 });

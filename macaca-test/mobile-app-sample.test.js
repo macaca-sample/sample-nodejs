@@ -73,7 +73,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
       .sleep(10 * 1000);
   });
 
-  after(function() {
+  after(() => {
     return driver
       .sleep(1000)
       .quit()
@@ -124,6 +124,7 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         .testGetProperty()
         .waitForElementByName('HOME')
         .click()
+        .sleep(1000)
         .waitForElementByName('list')
         .click()
         .sleep(1000)

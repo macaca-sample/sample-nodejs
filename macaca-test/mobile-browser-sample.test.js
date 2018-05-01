@@ -45,8 +45,14 @@ describe('macaca-test/mobile-browser-sample.test.js', function() {
       .sleep(1000)
   });
 
-  after(function() {
-    opn(path.join(__dirname, '..', 'reports', 'index.html'));
+  after(() => {
+    return driver
+      .sleep(1000)
+      .quit()
+      .sleep(1000)
+      .then(() => {
+        opn(path.join(__dirname, '..', 'reports', 'index.html#image'));
+      });
   });
 
   describe('macaca mobile sample', function() {

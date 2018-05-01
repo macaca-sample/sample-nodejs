@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/macaca-sample/sample-nodejs.git"
+    "url": "git@github.com:macaca-sample/sample-nodejs.git"
   },
   "devDependencies": {
     "android-app-bootstrap": "^1.0.8",
@@ -35,9 +35,9 @@
   },
   "scripts": {
     "doctor": "macaca doctor",
-    "test:native": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js",
-    "test:mobile-browser": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/mobile-app-sample.test.js",
-    "test:desktop-browser": "macaca run --verbose --reporter macaca-reporter -d ./macaca-test/desktop-browser-sample.test.js",
+    "test:native": "macaca run --verbose -d ./macaca-test/mobile-app-sample.test.js",
+    "test:mobile-browser": "macaca run --verbose -d ./macaca-test/mobile-app-sample.test.js",
+    "test:desktop-browser": "macaca run --verbose -d ./macaca-test/desktop-browser-sample.test.js",
     "test:ios": "cross-env platform=ios npm run test:native",
     "test:android": "cross-env platform=android npm run test:native",
     "test:ios-safari": "cross-env browser=safari npm run test:mobile-browser",

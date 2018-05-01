@@ -3,7 +3,9 @@
 const path = require('path');
 const _ = require('macaca-utils');
 const KEY_MAP = require('webdriver-keycode');
-const appendToContext = require('macaca-reporter').appendToContext;
+const {
+  appendToContext
+} = require('macaca-reporter');
 
 // npm package wrapper sample: https://github.com/macaca-sample/webdriver-client
 
