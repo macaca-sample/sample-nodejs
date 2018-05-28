@@ -22,7 +22,7 @@
     "macaca-reporter": "^1.0.10",
     "macaca-simple-reportor": "^1.0.0",
     "macaca-utils": "*",
-    "macaca-wd": "^1.0.17",
+    "macaca-wd": "^1.1.1",
     "mocha": "^4.0.1",
     "webdriver-keycode": "^1.0.2"
   },
