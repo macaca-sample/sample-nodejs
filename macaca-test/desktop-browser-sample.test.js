@@ -61,7 +61,7 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
       const url = path.join(__dirname, './pages/desktop-sample.html');
       return driver
         .get(`file://${url}`)
-        .sleep(3000)
+        .sleep(2000)
         .setCookie({
           url: pkg.homepage,
           name: pkg.name,
@@ -102,7 +102,7 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         .then(value => {
           assert(value, 'this message is from alert');
         })
-        .sleep(3000);
+        .sleep(2000);
     });
 
     it('#1 should works with online pages', function() {
@@ -110,13 +110,13 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
 
       return driver
         .get(initialURL)
-        .sleep(3000)
+        .sleep(2000)
         .elementById('kw')
         .sendKeys('macaca')
-        .sleep(3000)
+        .sleep(2000)
         .elementById('su')
         .click()
-        .sleep(5000)
+        .sleep(4000)
         .source()
         .then(html => {
           assert.ok(html.includes('macaca'));
@@ -127,10 +127,10 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         })
         .elementByXPathOrNull('//*[@id="kw"]')
         .sendKeys(' elementByXPath')
-        .sleep(3000)
+        .sleep(2000)
         .elementById('su')
         .click()
-        .sleep(5000)
+        .sleep(4000)
         .saveScreenshot('pic1');
     });
 
@@ -138,13 +138,13 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
       const initialURL = 'https://www.baidu.com';
       return driver
         .get(initialURL)
-        .sleep(3000)
+        .sleep(2000)
         .elementById('kw')
         .sendKeys('Macaca')
-        .sleep(3000)
+        .sleep(2000)
         .elementById('su')
         .click()
-        .sleep(5000)
+        .sleep(4000)
         .source()
         .then(html => {
           assert.ok(html.includes('macaca'));
@@ -157,11 +157,11 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
 
       return driver
         .get(iframeURL)
-        .sleep(3000)
+        .sleep(2000)
         .frame('mce_0_ifr')
         .elementById('tinymce')
         .sendKeys('这是一段测试')
-        .sleep(3000)
+        .sleep(2000)
         .takeScreenshot()
         .then(imgData => {
           const newImg = new Buffer(imgData, 'base64');
