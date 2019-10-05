@@ -3,6 +3,7 @@
 const path = require('path');
 const _ = require('macaca-utils');
 const KEY_MAP = require('webdriver-keycode');
+const macacaAIEngineMixIn = require('macaca-ai-engine/lib/wd-mixin');
 const {
   appendToContext
 } = require('macaca-reporter');
@@ -166,4 +167,42 @@ module.exports = (wd, isIOS) => {
       });
   });
 
+  wd.addPromiseChainMethod('validateSlide', function() {
+    return this
+      .execute(`
+        var __result = {};
+        var elem = document.querySelector('.nc_iconfont.btn_slide');
+        window.__macaca_current_element = elem;
+        var rect = elem.getBoundingClientRect();
+        __result = {
+          x: rect.left,
+          y: rect.top,
+          width: rect.width,
+          height: rect.height,
+        };
+        return JSON.stringify(__result);
+      `)
+      .then(data => {
+        const rect = JSON.parse(data);
+        const ratio = 1;
+        const { x, y, width, height } = rect;
+        const clientX = (x + width / 2) / ratio;
+        const clientY = (y + height / 2) / ratio;
+        return this
+          .domEvent('mousedown', {
+            clientX,
+            clientY,
+          })
+          .domEvent('mousemove', {
+            clientX: 800,
+            clientY,
+          })
+          .domEvent('mouseup', {
+            clientX: 800,
+            clientY,
+          });
+      });
+  });
+
+  macacaAIEngineMixIn(wd);
 };

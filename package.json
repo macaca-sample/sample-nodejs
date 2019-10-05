@@ -18,11 +18,12 @@
     "cross-env": "^5.1.4",
     "git-contributor": "^1.0.8",
     "ios-app-bootstrap": "^1.0.11",
+    "macaca-ai-engine": "^0.1.0",
     "macaca-cli": "*",
     "macaca-reporter": "^1.0.10",
     "macaca-simple-reportor": "^1.0.0",
     "macaca-utils": "*",
-    "macaca-wd": "^1.1.1",
+    "macaca-wd": "3",
     "mocha": "^4.0.1",
     "webdriver-keycode": "^1.0.2"
   },
@@ -44,6 +45,7 @@
     "test:android-chrome": "cross-env browser=chrome npm run test:mobile-browser",
     "test:desktop-puppeteer": "cross-env browser=puppeteer npm run test:desktop-browser",
     "test:desktop-electron": "cross-env browser=electron npm run test:desktop-browser",
+    "test:desktop-ai": "cross-env browser=electron macaca run --verbose -d ./macaca-test/desktop-browser-ai-sample.test.js",
     "test:desktop-chrome": "cross-env browser=chrome npm run test:desktop-browser",
     "test:simple-reporter": "cross-env CUSTOM_DIR=macaca-logs/desktop-browser-sample macaca run --verbose --reporter macaca-simple-reportor -d ./macaca-test/desktop-browser-sample.test.js",
     "contributor": "git-contributor"
