@@ -8,6 +8,8 @@ const {
   appendToContext
 } = require('macaca-reporter');
 
+require('dotenv').config();
+
 // npm package wrapper sample: https://github.com/macaca-sample/webdriver-client
 
 module.exports = (wd, isIOS) => {
