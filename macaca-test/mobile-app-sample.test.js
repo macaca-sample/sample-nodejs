@@ -26,7 +26,7 @@ const pkg = require('../package');
 // see: https://macacajs.github.io/desired-caps
 
 var iOSOpts = {
-  deviceName: 'iPhone 6s',
+  deviceName: 'iPhone 8',
   platformName: 'iOS',
   //autoAcceptAlerts: true,
   //reuse: 3,
