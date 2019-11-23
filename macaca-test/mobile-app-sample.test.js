@@ -25,16 +25,23 @@ const pkg = require('../package');
 
 // see: https://macacajs.github.io/desired-caps
 
+// iOS simulator sample config
+// identify simulator by deviceName, install automatically via app path
 var iOSOpts = {
   deviceName: 'iPhone 8',
   platformName: 'iOS',
-  //autoAcceptAlerts: true,
-  //reuse: 3,
-  //udid: '',
-  //bundleId: 'xudafeng.ios-app-bootstrap',
   app: iosApp.appPath
 };
 
+// iOS real device sample config
+// identify device by udid, install manually and pass in bundleId
+// var iOSOpts = {
+//   platformName: 'iOS',
+//   udid: 'udid-of-your-own-ios-device',
+//   bundleId: 'your-own-bundle-id.ios-app-bootstrap',
+// };
+
+// Android sample config
 var androidOpts = {
   platformName: 'Android',
   autoAcceptAlerts: false,
