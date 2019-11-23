@@ -112,11 +112,12 @@ module.exports = (wd, isIOS) => {
         .then(info => {
           console.log(`isVisible: ${JSON.stringify(info)}`);
         })
-        .waitForElementByName('list')
-        .getProperty('isAccessible')
-        .then(info => {
-          console.log(`element isAccessible: ${JSON.stringify(info)}`);
-        })
+        // TODO: fix isAccessible
+        // .waitForElementByName('list')
+        // .getProperty('isAccessible')
+        // .then(info => {
+        //   console.log(`element isAccessible: ${JSON.stringify(info)}`);
+        // })
         .waitForElementByName('list')
         .getProperty('isEnabled')
         .then(info => {

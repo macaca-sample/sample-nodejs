@@ -74,13 +74,12 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         .execute(`document.querySelector('#select').selectedIndex = 1`)
         .sleep(1000)
         .elementById('select')
-        /*
         .getProperty('value')
         .then(value => {
           assert.ok(value);
         })
-        */
-        .mouseEvent('#hover_text', 'mouseover')
+        .elementById('hover_text')
+        .domEvent('mouseover')
         .elementById('hover_text')
         .getComputedCss('color')
         .then(value => {
@@ -121,10 +120,10 @@ describe('macaca-test/desktop-browser-sample.test.js', function() {
         .then(html => {
           assert.ok(html.includes('macaca'));
         })
-        .hasElementByCss('#head > div.head_wrapper')
-        .then(hasHeadWrapper => {
-          assert.ok(hasHeadWrapper);
-        })
+        // .hasElementByCss('#head > div.head_wrapper')
+        // .then(hasHeadWrapper => {
+        //   assert.ok(hasHeadWrapper);
+        // })
         .elementByXPathOrNull('//*[@id="kw"]')
         .sendKeys(' elementByXPath')
         .sleep(2000)
