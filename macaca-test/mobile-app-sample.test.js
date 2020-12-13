@@ -28,7 +28,7 @@ const pkg = require('../package');
 // iOS simulator sample config
 // identify simulator by deviceName, install automatically via app path
 var iOSOpts = {
-  deviceName: 'iPhone 8',
+  deviceName: 'iPhone 12',
   platformName: 'iOS',
   app: iosApp.appPath
 };
