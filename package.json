@@ -16,14 +16,14 @@
     "blink-diff": "^1.0.13",
     "chai": "^4.1.2",
     "cross-env": "^5.1.4",
-    "git-contributor": "^1.0.8",
+    "git-contributor": "1",
     "ios-app-bootstrap": "^1.0.11",
     "macaca-cli": "*",
-    "macaca-reporter": "^1.0.10",
+    "macaca-reporter": "1",
     "macaca-simple-reportor": "^1.0.0",
     "macaca-utils": "*",
     "macaca-wd": "3",
-    "mocha": "^4.0.1",
+    "mocha": "^8.2.1",
     "webdriver-keycode": "^1.0.2"
   },
   "optionalDependencies": {
