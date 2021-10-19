@@ -26,17 +26,18 @@ module.exports = (wd, isIOS) => {
   wd.addPromiseChainMethod('appLogin', function(username, password) {
     if (isIOS) {
       return this
-        .waitForElementByXPath('//XCUIElementTypeTextField[1]')
-        .clear()
-        .sendKeys(username)
-        .waitForElementByXPath('//XCUIElementTypeSecureTextField[1]')
-        .clear()
-        .sendKeys(password)
-        .sleep(1000)
-        .sendKeys('\n')
+        // TODO: fix iOS 13 sendKeys / dismiss keybord issues
+        // .waitForElementByXPath('//XCUIElementTypeTextField[1]')
+        // .clear()
+        // .sendKeys(username)
+        // .waitForElementByXPath('//XCUIElementTypeSecureTextField[1]')
+        // .clear()
+        // .sendKeys(password)
+        // .sleep(1000)
+        // .sendKeys('\n')
         .waitForElementByName('Login')
         .click()
-        .sleep(5000);
+        .sleep(2000);
     }
 
     return this
@@ -63,7 +64,7 @@ module.exports = (wd, isIOS) => {
       .source()
       .waitForElementByName('Login')
       .click()
-      .sleep(5000);
+      .sleep(2000);
   });
 
   wd.addPromiseChainMethod('changeToNativeContext', function() {
