@@ -137,13 +137,13 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         .sleep(1000)
         .waitForElementByName('Alert')
         .click()
-        .sleep(5000)
+        .sleep(2000)
         .acceptAlert()
         .sleep(1000)
         .customback()
         .waitForElementByName('Gesture')
         .click()
-        .sleep(5000)
+        .sleep(2000)
         .then(() => {
           return driver
             .touch('tap', {
@@ -207,21 +207,21 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
       return driver
         .elementByXPath(webviewButtonXPath)
         .click()
-        .sleep(3000)
+        .sleep(2000)
         .changeToWebviewContext()
         .elementById('pushView')
         .click()
         .changeToWebviewContext()
         .waitForElementById('popView')
         .click()
-        .sleep(5000);
+        .sleep(2000);
     });
 
     it('should open remote url', function() {
       return driver
         .waitForElementByName('Baidu')
         .click()
-        .sleep(5000)
+        .sleep(2000)
         .changeToWebviewContext()
         .title()
         .then(title => {
@@ -240,12 +240,12 @@ describe('macaca-test/mobile-app-sample.test.js', function() {
         .sendKeys('中文+Macaca')
         .elementById('index-bn')
         .click()
-        .sleep(5000)
+        .sleep(2000)
         .source()
         .then(html => {
           assert.include(html, 'Macaca');
         })
-        .sleep(3000);
+        .sleep(2000);
     });
   });
 });
